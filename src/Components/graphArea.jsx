@@ -13,15 +13,15 @@ function GraphArea(props){
   const Array = [
     {
       name: "Start Today",
-      Amount: props.graphData && props.graphData.startToday,
+      Amount: props.graphData && props.graphData.startToday/100000,
     },
     {
       name: "Delayed Start",
-      Amount: props.graphData && props.graphData.delayedStart,
+      Amount: props.graphData && props.graphData.delayedStart/100000,
     },
     {
       name: "Notional Loss",
-      Amount: props.graphData && props.graphData.notionalLoss,
+      Amount: props.graphData && props.graphData.notionalLoss/100000,
       fill: "#DF2E38",
     },
   ];
@@ -65,7 +65,7 @@ function GraphArea(props){
               angle={270}
               position="left"
               offset={-1}
-              value="Amount (Rs.)"
+              value="Amount (Rs. in lacks)"
               style={{
                 textAnchor: "middle",
                 fontSize: "100%",
