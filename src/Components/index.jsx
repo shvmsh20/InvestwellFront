@@ -19,10 +19,9 @@ function Calculator() {
 
   const [err, setErr] = useState(false);
 
-  const [invalidInputStatusMonthlyInvestment,setInvalidInputStatusMonthlyInvestment]=useState(false);
-  const [invalidInputStatusInvestmentPeriod,setInvalidInputStatusInvestmentPeriod]=useState(false);
-  const [invalidInputStatusRateOfReturn, setInvalidInputStatusRateOfReturn]=useState(false);
-  const [invalidInputStatusDelay, setInvalidInputStatusDelay] = useState(false);
+  const [invalidInputType, setInvalidInputType] = useState();
+
+
 
   //Set Values of monthly investment, rate of return, investmment period, delay
 
@@ -79,29 +78,11 @@ function Calculator() {
     }
   };
 
-  const setInvalidInputStatus = (type, val) => {
-    switch (type) {
-      case "monthlyInvestment":
-        setInvalidInputStatusMonthlyInvestment(val);
-        break;
-      case "investmentPeriod":
-        setInvalidInputStatusInvestmentPeriod(val);
-        break;
-      case "rateOfReturn":
-        setInvalidInputStatusRateOfReturn(val);
-        break;
-      case "delay":
-        setInvalidInputStatusDelay(val);
-        break;
-      default:
-        break;  
-    }
-  };
 
   const handleSliderChange = (event, newValue, type) => {
     onSliderChange(type, newValue);
     onInputChange(type, newValue);
-    setInvalidInputStatus(type, false);
+    setInvalidInputType('');
   };
 
   const handleInputChange = (event, type) => {
@@ -113,20 +94,20 @@ function Calculator() {
     if (Number(val) < min) {
       onInputChange(type, val);
       onSliderChange(type, min);
-      setInvalidInputStatus(type, true);
+      setInvalidInputType(type);
     } else if (Number(val) > max) {
       onInputChange(type, val);
       onSliderChange(type, max);
-      setInvalidInputStatus(type, true);
+      setInvalidInputType(type);
     } else {
       onInputChange(type, val);
       onSliderChange(type, Number(val));
-      setInvalidInputStatus(type, false);
+      setInvalidInputType('');
     }
   };
 
   const handleBlur = (event, type) => {
-    setInvalidInputStatus(type, false);
+    setInvalidInputType('');
 
     const [min, max] = setRange(type);
 
@@ -188,7 +169,7 @@ function Calculator() {
             handleSliderChange={handleSliderChange}
             handleInputChange={handleInputChange}
             handleBlur={handleBlur}
-            invalidInputStatus={invalidInputStatusMonthlyInvestment}
+            invalidInput={invalidInputType}
           />
           <SliderArea
             index={1}
@@ -202,7 +183,7 @@ function Calculator() {
             handleSliderChange={handleSliderChange}
             handleInputChange={handleInputChange}
             handleBlur={handleBlur}
-            invalidInputStatus={invalidInputStatusInvestmentPeriod}
+            invalidInput={invalidInputType}
           />
           <SliderArea
             index={2}
@@ -216,7 +197,7 @@ function Calculator() {
             handleSliderChange={handleSliderChange}
             handleInputChange={handleInputChange}
             handleBlur={handleBlur}
-            invalidInputStatus={invalidInputStatusRateOfReturn}
+            invalidInput={invalidInputType}
           />
           <SliderArea
             index={3}
@@ -230,7 +211,7 @@ function Calculator() {
             handleSliderChange={handleSliderChange}
             handleInputChange={handleInputChange}
             handleBlur={handleBlur}
-            invalidInputStatus={invalidInputStatusDelay}
+            invalidInput={invalidInputType}
           />
         </div>
         {err ? (
