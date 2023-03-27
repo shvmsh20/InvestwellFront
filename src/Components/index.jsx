@@ -172,7 +172,7 @@ function Calculator() {
       <h5 className="info">
         It tells you how much wealth you can create by making monthly investment
       </h5>
-      <div className="container">
+      <div className="outerContainer">
         <div class="leftContainer">
           <SliderArea
             index={0}

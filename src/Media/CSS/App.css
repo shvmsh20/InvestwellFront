@@ -1,8 +1,9 @@
 *{
   box-sizing: border-box;
   font-family: sans-serif;
-  margin: 0px;
-  padding: 0px;
+  margin: 0%;
+  padding: 0%;
+
 }
 
 
@@ -47,7 +48,7 @@
   margin-left: 10px;
 }
 
-.rightMain .container{
+.rightMain .outerContainer{
   position: relative;
 }
 
@@ -99,6 +100,7 @@
 
 .rightMain .sliders{
   margin: 40px 0px 40px 30px;
+  width: 90%;
   width: 90%;
 }
 
@@ -166,6 +168,7 @@
   .sliders{
     width: 100%;
   }
+
 
 }
 
