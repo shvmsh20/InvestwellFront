@@ -73,25 +73,29 @@
   align-items: center;
   color: #626161;
   line-height: 1.5;
+  padding-bottom: 12px;
 }
 
-.rightMain .totalAmount{
+.rightMain .notionalLoss{
+  color: #DF2E38;
+  font-weight: bold;
+  font-family: sans-serif;
+  font-size: 22px;
+}
+
+.rightMain .delay{
   color: #506EE4;
   font-weight: bold;
   font-family: sans-serif;
-  font-size: 20px;
 }
 
-.rightMain  .potentialAmount{
-  color: #FF5F1B;
-  font-weight: bold;
+.rightMain .customTooltip{
+  padding: 10px;
   font-family: sans-serif;
-
 }
-.rightMain .delay{
-  color:#06A473;
+
+.rightMain .customTooltip .labelData{
   font-weight: bold;
-  font-family: sans-serif;
 }
 
 .rightMain  .barGraph{
