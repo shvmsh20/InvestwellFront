@@ -236,7 +236,7 @@ function Calculator() {
         ) : (
           <GraphArea
             monthlyInvestment={monthlyInvestment}
-            investmentPeriod={investmentPeriod}
+            delay={delay}
             graphData={graphData}
           />
         )}

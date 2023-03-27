@@ -73,23 +73,18 @@
   align-items: center;
   color: #626161;
   line-height: 1.5;
+  padding-bottom: 12px;
 }
 
-.rightMain .totalAmount{
-  color: #506EE4;
+.rightMain .notionalLoss{
+  color: #DF2E38;
   font-weight: bold;
   font-family: sans-serif;
-  font-size: 20px;
+  font-size: 22px;
 }
 
-.rightMain  .potentialAmount{
-  color: #FF5F1B;
-  font-weight: bold;
-  font-family: sans-serif;
-
-}
 .rightMain .delay{
-  color:#06A473;
+  color: #506EE4;
   font-weight: bold;
   font-family: sans-serif;
 }
