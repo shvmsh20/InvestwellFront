@@ -10,16 +10,14 @@ function Calculator() {
   const [rateOfReturn, setRateOfReturn] = useState(1);
   const [delay, setDelay] = useState(1);
 
-  const [monthlyInvestmentInput, setMonthlyInvestmentInput] = useState(500);
-  const [investmentPeriodInput, setInvestmentPeriodInput] = useState(1);
-  const [rateOfReturnInput, setRateOfReturnInput] = useState(1);
-  const [delayInput, setDelayInput] = useState(1);
+  const [currInputBoxType, setCurrInputBoxType] = useState();
+  const [inputBoxValue, setInputBoxValue] = useState();
+  const [invalidInputBoxType, setInvalidInputBoxType] = useState();
+
 
   const [graphData, setGraphData] = useState({});
-
   const [err, setErr] = useState(false);
-
-  const [invalidInputType, setInvalidInputType] = useState();
+  
 
 
 
@@ -44,24 +42,6 @@ function Calculator() {
     }
   }
 
-  function onInputChange(type, val) {
-    switch (type) {
-      case "monthlyInvestment":
-        setMonthlyInvestmentInput(val);
-        break;
-      case "investmentPeriod":
-        setInvestmentPeriodInput(val);
-        break;
-      case "rateOfReturn":
-        setRateOfReturnInput(val);
-        break;
-      case "delay":
-        setDelayInput(val);
-        break;
-      default:
-        break;
-    }
-  }
 
   const setRange = (type) => {
     switch (type) {
@@ -81,33 +61,34 @@ function Calculator() {
 
   const handleSliderChange = (event, newValue, type) => {
     onSliderChange(type, newValue);
-    onInputChange(type, newValue);
-    setInvalidInputType('');
+    setInputBoxValue(newValue);
+    setInvalidInputBoxType('');
   };
 
   const handleInputChange = (event, type) => {
-    //FrontEnd validations
 
     const [min, max] = setRange(type);
     const val = event.target.value;
 
+    setCurrInputBoxType(type)
+    setInputBoxValue(val);
+    
+
     if (Number(val) < min) {
-      onInputChange(type, val);
       onSliderChange(type, min);
-      setInvalidInputType(type);
+      setInvalidInputBoxType(type);
     } else if (Number(val) > max) {
-      onInputChange(type, val);
       onSliderChange(type, max);
-      setInvalidInputType(type);
+      setInvalidInputBoxType(type);
     } else {
-      onInputChange(type, val);
       onSliderChange(type, Number(val));
-      setInvalidInputType('');
+      setInvalidInputBoxType('');
     }
   };
 
   const handleBlur = (event, type) => {
-    setInvalidInputType('');
+    setInvalidInputBoxType('');
+    setCurrInputBoxType('')
 
     const [min, max] = setRange(type);
 
@@ -115,10 +96,8 @@ function Calculator() {
 
     if (Number(val) < min) {
       onSliderChange(type, min);
-      onInputChange(type, min);
     } else if (Number(val) > max) {
       onSliderChange(type, max);
-      onInputChange(type, max);
     }
   };
 
@@ -164,12 +143,13 @@ function Calculator() {
             max={100000}
             steps={50}
             value={monthlyInvestment}
-            inputVal={monthlyInvestmentInput}
+            inputBoxValue={inputBoxValue}
             onSliderChange={onSliderChange}
             handleSliderChange={handleSliderChange}
             handleInputChange={handleInputChange}
             handleBlur={handleBlur}
-            invalidInput={invalidInputType}
+            invalidInputBoxType={invalidInputBoxType}
+            currInputBoxType={currInputBoxType}
           />
           <SliderArea
             index={1}
@@ -178,12 +158,13 @@ function Calculator() {
             max={30}
             steps={1}
             value={investmentPeriod}
-            inputVal={investmentPeriodInput}
+            inputBoxValue={inputBoxValue}
             onSliderChange={onSliderChange}
             handleSliderChange={handleSliderChange}
             handleInputChange={handleInputChange}
             handleBlur={handleBlur}
-            invalidInput={invalidInputType}
+            invalidInputBoxType={invalidInputBoxType}
+            currInputBoxType={currInputBoxType}
           />
           <SliderArea
             index={2}
@@ -192,12 +173,13 @@ function Calculator() {
             max={30}
             steps={0.1}
             value={rateOfReturn}
-            inputVal={rateOfReturnInput}
+            inputBoxValue={inputBoxValue}
             onSliderChange={onSliderChange}
             handleSliderChange={handleSliderChange}
             handleInputChange={handleInputChange}
             handleBlur={handleBlur}
-            invalidInput={invalidInputType}
+            invalidInputBoxType={invalidInputBoxType}
+            currInputBoxType={currInputBoxType}
           />
           <SliderArea
             index={3}
@@ -206,12 +188,13 @@ function Calculator() {
             max={120}
             steps={1}
             value={delay}
-            inputVal={delayInput}
+            inputBoxValue={inputBoxValue}
             onSliderChange={onSliderChange}
             handleSliderChange={handleSliderChange}
             handleInputChange={handleInputChange}
             handleBlur={handleBlur}
-            invalidInput={invalidInputType}
+            invalidInputBoxType={invalidInputBoxType}
+            currInputBoxType={currInputBoxType}
           />
         </div>
         {err ? (

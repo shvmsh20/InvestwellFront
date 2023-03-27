@@ -203,7 +203,7 @@ function SliderArea(props) {
           </Grid>
           <Grid item className="gridItem">
             <CustomInput
-              value={props.inputVal}
+              value={props.currInputBoxType===props.type ? props.inputBoxValue: props.value}
               size="small"
               onBlur={(event)=>props.handleBlur(event, props.type)}
               onChange={(event)=>props.handleInputChange(event, props.type)}
@@ -216,7 +216,7 @@ function SliderArea(props) {
             />
           </Grid>
         </Grid>
-        {props.invalidInput===props.type && <div className="errField">Invalid input</div>}
+        {props.invalidInputBoxType===props.type && <div className="errField">Invalid input</div>}
 
         <Grid container>
           <Grid item xs>
