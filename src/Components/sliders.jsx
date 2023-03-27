@@ -196,8 +196,8 @@ function SliderArea(props) {
 
   return (
     <div className="sliders">
-      <Box sx={{ width: 500 }}>
-        <Grid container className="grid">
+      <Box >
+        <Grid container className="grid" >
           <Grid item >
             <Typography gutterBottom>{titleArr[props.index]}</Typography>
           </Grid>
