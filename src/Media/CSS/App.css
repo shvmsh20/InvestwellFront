@@ -99,6 +99,7 @@
 
 .rightMain .sliders{
   margin: 40px 0px 40px 30px;
+  width: 90%;
 }
 
 
@@ -169,14 +170,16 @@
 }
 
 @media screen and (max-width:768px) {
-  .leftSideBox{
+
+    
+   .leftSideBox{
     display: none;
   }
 
   .rightSideBox{
-    background-color: #fff;
-  }
-  
+    width: 100%;
+  } 
+
 }
 
 
