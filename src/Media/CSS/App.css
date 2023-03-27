@@ -89,6 +89,15 @@
   font-family: sans-serif;
 }
 
+.rightMain .customTooltip{
+  padding: 10px;
+  font-family: sans-serif;
+}
+
+.rightMain .customTooltip .labelData{
+  font-weight: bold;
+}
+
 .rightMain  .barGraph{
   margin: 20px;
 }

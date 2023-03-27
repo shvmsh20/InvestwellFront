@@ -16,19 +16,19 @@ function GraphArea(props) {
 
   const Array = [
     {
-      name: "Start Today",
+      label: "Start Today",
       Amount: props.graphData && props.graphData.startToday,
-      fill : "#5D9C59",
+      fill: "#5D9C59",
     },
     {
-      name: "Delayed Start",
+      label: "Delayed Start",
       Amount: props.graphData && props.graphData.delayedStart,
-      fill : "#BCE29E"
+      fill: "#BCE29E",
     },
     {
-      name: "Notional Loss",
+      label: "Notional Loss",
       Amount: props.graphData && props.graphData.notionalLoss,
-      fill: "#DF2E38",
+      fill: "#FF0000",
     },
   ];
 
@@ -38,6 +38,33 @@ function GraphArea(props) {
       .replace(/\D/g, "")
       .replace(/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/g, "$1,");
   }
+
+  const intro = (label) => {
+    if (label == "Start Today") {
+      return toIndianRupees(props.graphData.startToday);
+    }
+    if (label == "Delayed Start") {
+      return toIndianRupees(props.graphData.delayedStart);
+    }
+    if (label == "Notional Loss") {
+      return toIndianRupees(props.graphData.notionalLoss);
+    }
+  };
+
+  const CustomTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="customTooltip">
+          <p>
+            <span className="labelData">{label == "Start Today" || label == "Delayed Start"
+              ? "Amount Accumulated : "
+              : "Notional Loss : "} </span>{"₹"}
+            <span className="tooltipAmount">{intro(label)}</span>
+          </p>
+        </div>
+      );
+    }
+  };
 
   return (
     <div className="rightContainer">
@@ -60,13 +87,13 @@ function GraphArea(props) {
           width={200}
           max-height={200}
         >
-          <XAxis dataKey="name" fill="#5E73EB" />
+          <XAxis dataKey="label" fill="#5E73EB" />
           <YAxis width={110} tickFormatter={formatYAxis}>
             <Label
               angle={270}
               position="left"
               offset={-1}
-              value="Amount (Rs. in Lakh)"
+              value="Amount (Rs. in Lakhs)"
               style={{
                 textAnchor: "middle",
                 fontSize: "100%",
@@ -74,7 +101,7 @@ function GraphArea(props) {
               }}
             ></Label>
           </YAxis>
-          <Tooltip cursor={false} />
+          <Tooltip cursor={false} content={<CustomTooltip />} />
           <Bar dataKey="Amount" />
         </BarChart>
       </ResponsiveContainer>
