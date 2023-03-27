@@ -18,19 +18,13 @@ function Calculator() {
   const [graphData, setGraphData] = useState({});
 
   const [err, setErr] = useState(false);
-  const [
-    invalidInputStatusMonthlyInvestment,
-    setInvalidInputStatusMonthlyInvestment,
-  ] = useState(false);
-  const [
-    invalidInputStatusInvestmentPeriod,
-    setInvalidInputStatusInvestmentPeriod,
-  ] = useState(false);
-  const [invalidInputStatusRateOfReturn, setInvalidInputStatusRateOfReturn] =
-    useState(false);
+
+  const [invalidInputStatusMonthlyInvestment,setInvalidInputStatusMonthlyInvestment]=useState(false);
+  const [invalidInputStatusInvestmentPeriod,setInvalidInputStatusInvestmentPeriod]=useState(false);
+  const [invalidInputStatusRateOfReturn, setInvalidInputStatusRateOfReturn]=useState(false);
   const [invalidInputStatusDelay, setInvalidInputStatusDelay] = useState(false);
 
-  //Set Values of monthly investment,rate of return, investmment period, delay
+  //Set Values of monthly investment, rate of return, investmment period, delay
 
   function onSliderChange(type, val) {
     switch (type) {
@@ -45,6 +39,8 @@ function Calculator() {
         break;
       case "delay":
         setDelay(val);
+        break;
+      default:
         break;
     }
   }
@@ -63,6 +59,8 @@ function Calculator() {
       case "delay":
         setDelayInput(val);
         break;
+      default:
+        break;
     }
   }
 
@@ -76,6 +74,8 @@ function Calculator() {
         return [1, 30];
       case "delay":
         return [1, 120];
+      default:
+        break;  
     }
   };
 
@@ -93,6 +93,8 @@ function Calculator() {
       case "delay":
         setInvalidInputStatusDelay(val);
         break;
+      default:
+        break;  
     }
   };
 
@@ -153,8 +155,8 @@ function Calculator() {
       })
       .then((res) => {
         // for backend validation and showing the error page
-        if (res.data && res.data.status == 0) {
-          setGraphData(res.data.result && res.data.result);
+        if (res.data && res.data.status === 0) {
+          setGraphData(res.data.result);
           setErr(false);
         } else {
           setErr(true);
@@ -235,7 +237,6 @@ function Calculator() {
           <ErrorPage />
         ) : (
           <GraphArea
-            monthlyInvestment={monthlyInvestment}
             delay={delay}
             graphData={graphData}
           />

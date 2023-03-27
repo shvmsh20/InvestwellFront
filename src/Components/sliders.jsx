@@ -188,7 +188,7 @@ function valuetext(value) {
   return `${value}`;
 }
 
-const Input2 = styled(MuiInput)`
+const CustomInput = styled(MuiInput)`
   width: 60px;
 `;
 
@@ -202,7 +202,7 @@ function SliderArea(props) {
             <Typography gutterBottom>{titleArr[props.index]}</Typography>
           </Grid>
           <Grid item className="gridItem">
-            <Input2
+            <CustomInput
               value={props.inputVal}
               size="small"
               onBlur={(event)=>props.handleBlur(event, props.type)}

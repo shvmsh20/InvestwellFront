@@ -10,6 +10,7 @@ import {
 } from "recharts";
 
 function GraphArea(props) {
+  //Converting Y-Axis label in lack
   const formatYAxis = (tickItem) => {
     return `${tickItem / 100000}`;
   };
@@ -33,20 +34,20 @@ function GraphArea(props) {
   ];
 
   function toIndianRupees(sum) {
-    return Number(sum)
+    return parseInt(sum)
       .toString()
       .replace(/\D/g, "")
       .replace(/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/g, "$1,");
   }
 
-  const intro = (label) => {
-    if (label == "Start Today") {
+  const formatValue = (label) => {
+    if (label === "Start Today") {
       return toIndianRupees(props.graphData.startToday);
     }
-    if (label == "Delayed Start") {
+    if (label === "Delayed Start") {
       return toIndianRupees(props.graphData.delayedStart);
     }
-    if (label == "Notional Loss") {
+    if (label === "Notional Loss") {
       return toIndianRupees(props.graphData.notionalLoss);
     }
   };
@@ -56,10 +57,10 @@ function GraphArea(props) {
       return (
         <div className="customTooltip">
           <p>
-            <span className="labelData">{label == "Start Today" || label == "Delayed Start"
+            <span className="labelData">{label === "Start Today" || label === "Delayed Start"
               ? "Amount Accumulated : "
               : "Notional Loss : "} </span>{"₹"}
-            <span className="tooltipAmount">{intro(label)}</span>
+            <span className="tooltipAmount">{formatValue(label)}</span>
           </p>
         </div>
       );
@@ -73,10 +74,9 @@ function GraphArea(props) {
         <span className="delay">
           {props.delay} {props.delay > 1 ? "months" : "month"}{" "}
         </span>{" "}
-        in starting your SIP will cause a notional loss of{" "}
+        in starting your SIP will cause a notional loss of
         <span className="notionalLoss">
-          {" "}
-          <br />₹{toIndianRupees(props.graphData.notionalLoss)}
+          <br />₹{toIndianRupees(props.graphData && props.graphData.notionalLoss)}
         </span>
         <br /> in the final value of your investment.
       </p>
