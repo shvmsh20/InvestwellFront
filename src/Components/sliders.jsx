@@ -211,7 +211,7 @@ function SliderArea(props) {
               value={props.currInputBoxType===props.type ? props.inputBoxValue: props.value}
               size="small"
               onBlur={(event)=>props.handleBlur(event, props.type)}
-              onChange={(event)=>props.handleInputChange(event, props.type)}
+              onChange={(event)=>props.onChange(event, props.type, "inputBox")}
               inputProps={{
                 step: props.steps,
                 min: props.min,
@@ -235,7 +235,7 @@ function SliderArea(props) {
               step={props.steps}
               marks={labelArr[props.type]}
               value={props.value}
-              onChange={(event, newValue)=>props.handleSliderChange(event, newValue, props.type)}
+              onChange={(event)=>props.onChange(event, props.type, "slider")}
               aria-labelledby="input-slider"
             />
           </Grid>

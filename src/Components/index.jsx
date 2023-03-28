@@ -57,29 +57,27 @@ function Calculator() {
     }
   };
 
-
-  const handleSliderChange = (event, newValue, type) => {
-    onSliderChange(type, newValue);
-    setInputBoxValue(newValue);
-  };
-
-  const handleInputChange = (event, type) => {
-
-    const [min, max] = setRange(type);
+ 
+  const onChange = (event, inputBoxType, inputType)=>{
     const val = event.target.value;
-
-    setCurrInputBoxType(type)
-    setInputBoxValue(val);
-    
-
-    if (Number(val) < min) {
-      onSliderChange(type, min);
-    } else if (Number(val) > max) {
-      onSliderChange(type, max);
-    } else {
-      onSliderChange(type, Number(val));
+    if(inputType==="slider"){
+      onSliderChange(inputBoxType, val);
+      setInputBoxValue(val);
+    }else{
+      const [min, max] = setRange(inputBoxType);
+      
+      setCurrInputBoxType(inputBoxType)
+      setInputBoxValue(val);
+      
+      if (Number(val) < min) {
+        onSliderChange(inputBoxType, min);
+      } else if (Number(val) > max) {
+        onSliderChange(inputBoxType, max);
+      } else {
+        onSliderChange(inputBoxType, Number(val));
+      }
     }
-  };
+  }
 
   const handleBlur = (event, type) => {
     setCurrInputBoxType('')
@@ -94,6 +92,8 @@ function Calculator() {
       onSliderChange(type, max);
     }
   };
+
+ 
 
   //Api calling
 
@@ -138,8 +138,7 @@ function Calculator() {
             value={monthlyInvestment}
             currInputBoxType={currInputBoxType}
             inputBoxValue={inputBoxValue}
-            handleSliderChange={handleSliderChange}
-            handleInputChange={handleInputChange}
+            onChange={onChange}
             handleBlur={handleBlur}
           />
           <SliderArea
@@ -150,8 +149,7 @@ function Calculator() {
             value={investmentPeriod}
             currInputBoxType={currInputBoxType}
             inputBoxValue={inputBoxValue}
-            handleSliderChange={handleSliderChange}
-            handleInputChange={handleInputChange}
+            onChange={onChange}
             handleBlur={handleBlur}
           />
           <SliderArea
@@ -162,9 +160,8 @@ function Calculator() {
             value={rateOfReturn}
             currInputBoxType={currInputBoxType}
             inputBoxValue={inputBoxValue}
-            handleSliderChange={handleSliderChange}
-            handleInputChange={handleInputChange}
-            handleBlur={handleBlur}
+            onChange={onChange}
+            handleBlur={handleBlur} 
           />
           <SliderArea
             type="delay"
@@ -174,9 +171,8 @@ function Calculator() {
             value={delay}
             currInputBoxType={currInputBoxType}
             inputBoxValue={inputBoxValue}
-            handleSliderChange={handleSliderChange}
-            handleInputChange={handleInputChange}
-            handleBlur={handleBlur} 
+            onChange={onChange}
+            handleBlur={handleBlur}  
           />
         </div>
         {err ? (
