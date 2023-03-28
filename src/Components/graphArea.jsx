@@ -72,10 +72,10 @@ function GraphArea(props) {
   return (
     <div className="rightContainer">
       <p className="graphText">
-        Delay of{" "}
+        Delay of 
         <span className="delay">
-          {props.delay} {props.delay > 1 ? "months" : "month"}{" "}
-        </span>{" "}
+          {props.delay} {props.delay > 1 ? " months " : " month "}
+        </span>
         in starting your SIP will cause a notional loss of
         <span className="notionalLoss">
           <br />₹{toIndianRupees(props.graphData && props.graphData.notionalLoss)}

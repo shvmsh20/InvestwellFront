@@ -198,7 +198,6 @@ const CustomInput = styled(MuiInput)`
 `;
 
 function SliderArea(props) {
-
   return (
     <div className="sliders">
       <Box>
@@ -209,10 +208,10 @@ function SliderArea(props) {
           <Grid item className="gridItem" >
             <CustomInput
               className="inputBox"
-              value={props.currInputBoxType===props.type ? props.inputBoxValue: props.value}
+              value={props.invalidInputBox === props.type ? props.inputBoxValue: props.value}
               size="small"
-              onBlur={(event)=>props.handleBlur(event, props.type)}
-              onChange={(event)=>props.onChange(event, props.type, "inputBox")}
+              onBlur={(event)=>props.onChange(event, props.type, "blur", props.min, props.max)}
+              onChange={(event)=>props.onChange(event, props.type, "inputBox", props.min, props.max)}
               inputProps={{
                 step: props.steps,
                 min: props.min,
@@ -222,8 +221,8 @@ function SliderArea(props) {
             />
           </Grid>
         </Grid>
-        {((props.inputBoxValue<props.min || props.inputBoxValue>props.max) && props.currInputBoxType===props.type) 
-        && <div className="errField">Invalid input</div>}
+        {props.invalidInputBox === props.type && 
+        <div className="errField">Invalid input</div>}
 
         <Grid container>
           <Grid item xs>
@@ -236,7 +235,7 @@ function SliderArea(props) {
               step={props.steps}
               marks={labelArr[props.type]}
               value={props.value}
-              onChange={(event)=>props.onChange(event, props.type, "slider")}
+              onChange={(event)=>props.onChange(event, props.type, "slider", props.min, props.max)}
               aria-labelledby="input-slider"
             />
           </Grid>
