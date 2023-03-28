@@ -81,7 +81,7 @@ const ipArray = [
   }
 ];
 
-const errArray = [
+const rorArray = [
   {
     value: 1,
     label: "1",
@@ -175,14 +175,19 @@ const delayArray = [
   }
 ];
 
-const labelArr = [miArray, ipArray, errArray, delayArray];
+const labelArr = {
+  monthlyInvestment:miArray, 
+  investmentPeriod:ipArray, 
+  rateOfReturn:rorArray, 
+  delay:delayArray
+};
 
-const titleArr = [
-  "Monthly Investment (Rs.)",
-  "Investment Period (in years)",
-  "Expected Rate of Return (%p.a)",
-  "Delay in Staring SIP (in months)",
-];
+const titleArr = {
+  monthlyInvestment:"Monthly Investment (Rs.)",
+  investmentPeriod:"Investment Period (in years)",
+  rateOfReturn:"Expected Rate of Return (%p.a)",
+  delay:"Delay in Staring SIP (in months)",
+}
 
 function valuetext(value) {
   return `${value}`;
@@ -198,8 +203,8 @@ function SliderArea(props) {
     <div className="sliders">
       <Box>
         <Grid container className="grid">
-          <Grid item>
-            <Typography gutterBottom>{titleArr[props.index]}</Typography>
+          <Grid item >
+            <Typography gutterBottom>{titleArr[props.type]}</Typography>
           </Grid>
           <Grid item className="gridItem" >
             <CustomInput
@@ -207,7 +212,7 @@ function SliderArea(props) {
               value={props.currInputBoxType===props.type ? props.inputBoxValue: props.value}
               size="small"
               onBlur={(event)=>props.handleBlur(event, props.type)}
-              onChange={(event)=>props.handleInputChange(event, props.type)}
+              onChange={(event)=>props.onChange(event, props.type, "inputBox")}
               inputProps={{
                 step: props.steps,
                 min: props.min,
@@ -217,7 +222,8 @@ function SliderArea(props) {
             />
           </Grid>
         </Grid>
-        {props.invalidInputBoxType===props.type && <div className="errField">Invalid input</div>}
+        {((props.inputBoxValue<props.min || props.inputBoxValue>props.max) && props.currInputBoxType===props.type) 
+        && <div className="errField">Invalid input</div>}
 
         <Grid container>
           <Grid item xs>
@@ -228,9 +234,9 @@ function SliderArea(props) {
               min={props.min}
               max={props.max}
               step={props.steps}
-              marks={labelArr[props.index]}
+              marks={labelArr[props.type]}
               value={props.value}
-              onChange={(event, newValue)=>props.handleSliderChange(event, newValue, props.type)}
+              onChange={(event)=>props.onChange(event, props.type, "slider")}
               aria-labelledby="input-slider"
             />
           </Grid>

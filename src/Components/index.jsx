@@ -12,7 +12,6 @@ function Calculator() {
 
   const [currInputBoxType, setCurrInputBoxType] = useState();
   const [inputBoxValue, setInputBoxValue] = useState();
-  const [invalidInputBoxType, setInvalidInputBoxType] = useState();
 
 
   const [graphData, setGraphData] = useState({});
@@ -58,36 +57,29 @@ function Calculator() {
     }
   };
 
-
-  const handleSliderChange = (event, newValue, type) => {
-    onSliderChange(type, newValue);
-    setInputBoxValue(newValue);
-    setInvalidInputBoxType('');
-  };
-
-  const handleInputChange = (event, type) => {
-
-    const [min, max] = setRange(type);
+ 
+  const onChange = (event, inputBoxType, inputType)=>{
     const val = event.target.value;
-
-    setCurrInputBoxType(type)
-    setInputBoxValue(val);
-    
-
-    if (Number(val) < min) {
-      onSliderChange(type, min);
-      setInvalidInputBoxType(type);
-    } else if (Number(val) > max) {
-      onSliderChange(type, max);
-      setInvalidInputBoxType(type);
-    } else {
-      onSliderChange(type, Number(val));
-      setInvalidInputBoxType('');
+    if(inputType==="slider"){
+      onSliderChange(inputBoxType, val);
+      setInputBoxValue(val);
+    }else{
+      const [min, max] = setRange(inputBoxType);
+      
+      setCurrInputBoxType(inputBoxType)
+      setInputBoxValue(val);
+      
+      if (Number(val) < min) {
+        onSliderChange(inputBoxType, min);
+      } else if (Number(val) > max) {
+        onSliderChange(inputBoxType, max);
+      } else {
+        onSliderChange(inputBoxType, Number(val));
+      }
     }
-  };
+  }
 
   const handleBlur = (event, type) => {
-    setInvalidInputBoxType('');
     setCurrInputBoxType('')
 
     const [min, max] = setRange(type);
@@ -100,6 +92,8 @@ function Calculator() {
       onSliderChange(type, max);
     }
   };
+
+ 
 
   //Api calling
 
@@ -137,64 +131,48 @@ function Calculator() {
       <div className="outerContainer">
         <div class="leftContainer">
           <SliderArea
-            index={0}
             type="monthlyInvestment"
             min={500}
             max={100000}
             steps={50}
             value={monthlyInvestment}
-            inputBoxValue={inputBoxValue}
-            onSliderChange={onSliderChange}
-            handleSliderChange={handleSliderChange}
-            handleInputChange={handleInputChange}
-            handleBlur={handleBlur}
-            invalidInputBoxType={invalidInputBoxType}
             currInputBoxType={currInputBoxType}
+            inputBoxValue={inputBoxValue}
+            onChange={onChange}
+            handleBlur={handleBlur}
           />
           <SliderArea
-            index={1}
             type="investmentPeriod"
             min={1}
             max={30}
             steps={1}
             value={investmentPeriod}
-            inputBoxValue={inputBoxValue}
-            onSliderChange={onSliderChange}
-            handleSliderChange={handleSliderChange}
-            handleInputChange={handleInputChange}
-            handleBlur={handleBlur}
-            invalidInputBoxType={invalidInputBoxType}
             currInputBoxType={currInputBoxType}
+            inputBoxValue={inputBoxValue}
+            onChange={onChange}
+            handleBlur={handleBlur}
           />
           <SliderArea
-            index={2}
             type="rateOfReturn"
             min={1}
             max={30}
             steps={0.1}
             value={rateOfReturn}
-            inputBoxValue={inputBoxValue}
-            onSliderChange={onSliderChange}
-            handleSliderChange={handleSliderChange}
-            handleInputChange={handleInputChange}
-            handleBlur={handleBlur}
-            invalidInputBoxType={invalidInputBoxType}
             currInputBoxType={currInputBoxType}
+            inputBoxValue={inputBoxValue}
+            onChange={onChange}
+            handleBlur={handleBlur} 
           />
           <SliderArea
-            index={3}
             type="delay"
             min={1}
             max={120}
             steps={1}
             value={delay}
-            inputBoxValue={inputBoxValue}
-            onSliderChange={onSliderChange}
-            handleSliderChange={handleSliderChange}
-            handleInputChange={handleInputChange}
-            handleBlur={handleBlur}
-            invalidInputBoxType={invalidInputBoxType}
             currInputBoxType={currInputBoxType}
+            inputBoxValue={inputBoxValue}
+            onChange={onChange}
+            handleBlur={handleBlur}  
           />
         </div>
         {err ? (
