@@ -198,11 +198,12 @@ function SliderArea(props) {
     <div className="sliders">
       <Box>
         <Grid container className="grid">
-          <Grid item >
+          <Grid item>
             <Typography gutterBottom>{titleArr[props.index]}</Typography>
           </Grid>
-          <Grid item className="gridItem">
+          <Grid item className="gridItem" >
             <CustomInput
+              className="inputBox"
               value={props.currInputBoxType===props.type ? props.inputBoxValue: props.value}
               size="small"
               onBlur={(event)=>props.handleBlur(event, props.type)}

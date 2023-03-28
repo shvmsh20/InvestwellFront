@@ -1,29 +1,25 @@
-*{
+* {
   box-sizing: border-box;
   font-family: sans-serif;
-  margin: 0%;
-  padding: 0%;
-
 }
 
-
-.leftSideBox{
+.leftSideBox {
   position: relative;
   background: #526FE4;
   width: 15%;
   height: 100vh;
   display: inline-block;
+  overflow-x: hidden;
 }
 
-.rightSideBox{
+.rightSideBox {
   display: inline-block;
   width: 85%;
-  height: inherit;
+  height: 100vh;
   position: absolute;
   background-color: #F1F5FA;
 }
-
-.rightSideBox .backBtn{
+.rightSideBox .backBtn {
   font-weight: 550;
   font-size: medium;
   margin: 10px;
@@ -31,104 +27,92 @@
   background: none;
 }
 
-.rightMain{
+.rightMain {
   background-color: #fff;
   padding: 10px;
   margin: 20px;
   position: relative;
 }
-
-.rightMain .info{
+.rightMain .info {
   font-weight: 400;
   margin: 10px;
 }
-
-.rightMain .heading{
+.rightMain .heading {
   font-weight: 300;
-  margin-left: 10px;
+  margin: 10px;
 }
-
-.rightMain .outerContainer{
+.rightMain .outerContainer {
   position: relative;
 }
-
-.rightMain .leftContainer{
+.rightMain .leftContainer {
   width: 50%;
+  height: inherit;
   border: 1px solid #EAEBED;
   margin: 10px;
   display: inline-block;
 }
-
-
-.rightMain .rightContainer{
+.rightMain .rightContainer {
   position: absolute;
-  width: 50%;
+  width: 48%;
   display: inline-block;
   border: 1px solid #EAEBED;
   margin: 10px;
   padding: 20px;
 }
-
-.rightMain .graphText{
+.rightMain .rightContainer .graphText {
   align-items: center;
   color: #626161;
   line-height: 1.5;
   padding-bottom: 12px;
 }
-
-.rightMain .notionalLoss{
+.rightMain .rightContainer .notionalLoss {
   color: #DF2E38;
   font-weight: bold;
   font-family: sans-serif;
   font-size: 22px;
 }
-
-.rightMain .delay{
+.rightMain .rightContainer .delay {
   color: #506EE4;
   font-weight: bold;
   font-family: sans-serif;
 }
-
-.rightMain .customTooltip{
-  padding: 10px;
-  font-family: sans-serif;
+.rightMain .rightContainer .customTooltip {
+  text-align: left;
+  top: 0;
+  left: 0;
 }
-
-.rightMain .customTooltip .labelData{
+.rightMain .rightContainer .customTooltip .labelData {
   font-weight: bold;
+  font-size: small;
+  margin: 3px 9px;
 }
-
-.rightMain  .barGraph{
+.rightMain .rightContainer .barGraph {
   margin: 20px;
 }
-
-.rightMain .sliders{
+.rightMain .sliders {
   margin: 40px 0px 40px 30px;
   width: 90%;
   width: 90%;
 }
-
-
-.rightMain .grid{
+.rightMain .grid {
   position: relative;
 }
-
-
-.rightMain .sliders .gridItem{
+.rightMain .gridItem {
   position: absolute;
   right: 0;
 }
-
-.rightMain .sliders .errField{
+.rightMain .inputBox {
+  background-color: #F1F5FA;
+  width: 90%;
+}
+.rightMain .sliders .errField {
   color: white;
   background-color: #DF2E38;
   padding: 3px;
   font-size: 14px;
   margin: 2px 0px;
-  
 }
-
-.rightMain .errorPage{
+.rightMain .rightMain .errorPage {
   position: absolute;
   width: 46%;
   height: 96.5%;
@@ -138,15 +122,13 @@
   padding: 15px;
   justify-content: center;
   text-transform: uppercase;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
 }
-
-.rightMain .errorPage h1{
+.rightMain .rightMain .errorPage h1 {
   color: #DF2E38;
-  margin: 200px 0px 0px 180px ;
+  margin: 200px 0px 0px 180px;
 }
-
-.rightMain .errorPage h2{
+.rightMain .rightMain .errorPage h2 {
   display: block;
   color: #DF2E38;
   font-size: 20px;
@@ -154,40 +136,29 @@
   margin: 0px 0px 0px 118px;
 }
 
-@media screen and (max-width:1300px) {
-
-  .rightMain .rightContainer{
+@media (max-width: 1300px), (max-height: 300px) {
+  .rightMain .rightContainer {
     display: block;
+    width: 90%;
+  }
+  .rightMain .leftContainer {
+    width: 90%;
+  }
+  .rightMain .sliders {
+    width: 90%;
+  }
+  .rightMain .rightSideBox {
     width: 100%;
   }
-
-  .rightMain .leftContainer{
-    width: 100%;
-  }
-
-  .leftSideBox{
-    height: 100vh;
+  .leftSideBox {
     position: relative;
   }
-  .sliders{
-    width: 100%;
-  }
-
-
 }
-
-@media screen and (max-width:768px) {
-
-    
-   .leftSideBox{
+@media screen and (max-width: 768px) {
+  .leftSideBox {
     display: none;
   }
-
-  .rightSideBox{
+  .rightSideBox {
     width: 100%;
-  } 
-
-}
-
-
-
+  }
+}/*# sourceMappingURL=main.css.map */

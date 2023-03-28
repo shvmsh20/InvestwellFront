@@ -67,6 +67,8 @@ function GraphArea(props) {
     }
   };
 
+  
+
   return (
     <div className="rightContainer">
       <p className="graphText">
@@ -84,8 +86,7 @@ function GraphArea(props) {
         <BarChart
           className="barGraph"
           data={Array}
-          width={200}
-          max-height={200}
+          
         >
           <XAxis dataKey="label" fill="#5E73EB" />
           <YAxis width={110} tickFormatter={formatYAxis}>
@@ -93,7 +94,7 @@ function GraphArea(props) {
               angle={270}
               position="left"
               offset={-1}
-              value="Amount (Rs. in Lakhs)"
+              value="Amount (Rs. in Lacs)"
               style={{
                 textAnchor: "middle",
                 fontSize: "100%",
@@ -101,8 +102,14 @@ function GraphArea(props) {
               }}
             ></Label>
           </YAxis>
-          <Tooltip cursor={false} content={<CustomTooltip />} />
-          <Bar dataKey="Amount" />
+          <Tooltip cursor={false} content={<CustomTooltip />} 
+          position={{ y: 0 }}
+          allowEscapeViewBox={{ x: true, y: true }}
+          wrapperStyle={{ outline: "none" }}
+
+            
+            />
+          <Bar dataKey="Amount"   />
         </BarChart>
       </ResponsiveContainer>
     </div>

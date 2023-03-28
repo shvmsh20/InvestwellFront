@@ -1,4 +1,4 @@
-import "./Media/CSS/App.css";
+import "./Media/sass/main.css";
 import Main from "../src/Components/main"
 
 function App() {
