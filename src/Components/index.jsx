@@ -12,7 +12,6 @@ function Calculator() {
 
   const [currInputBoxType, setCurrInputBoxType] = useState();
   const [inputBoxValue, setInputBoxValue] = useState();
-  const [invalidInputBoxType, setInvalidInputBoxType] = useState();
 
 
   const [graphData, setGraphData] = useState({});
@@ -62,7 +61,6 @@ function Calculator() {
   const handleSliderChange = (event, newValue, type) => {
     onSliderChange(type, newValue);
     setInputBoxValue(newValue);
-    setInvalidInputBoxType('');
   };
 
   const handleInputChange = (event, type) => {
@@ -76,18 +74,14 @@ function Calculator() {
 
     if (Number(val) < min) {
       onSliderChange(type, min);
-      setInvalidInputBoxType(type);
     } else if (Number(val) > max) {
       onSliderChange(type, max);
-      setInvalidInputBoxType(type);
     } else {
       onSliderChange(type, Number(val));
-      setInvalidInputBoxType('');
     }
   };
 
   const handleBlur = (event, type) => {
-    setInvalidInputBoxType('');
     setCurrInputBoxType('')
 
     const [min, max] = setRange(type);
@@ -148,7 +142,6 @@ function Calculator() {
             handleSliderChange={handleSliderChange}
             handleInputChange={handleInputChange}
             handleBlur={handleBlur}
-            invalidInputBoxType={invalidInputBoxType}
             currInputBoxType={currInputBoxType}
           />
           <SliderArea
@@ -163,7 +156,6 @@ function Calculator() {
             handleSliderChange={handleSliderChange}
             handleInputChange={handleInputChange}
             handleBlur={handleBlur}
-            invalidInputBoxType={invalidInputBoxType}
             currInputBoxType={currInputBoxType}
           />
           <SliderArea
@@ -178,7 +170,6 @@ function Calculator() {
             handleSliderChange={handleSliderChange}
             handleInputChange={handleInputChange}
             handleBlur={handleBlur}
-            invalidInputBoxType={invalidInputBoxType}
             currInputBoxType={currInputBoxType}
           />
           <SliderArea
@@ -193,7 +184,6 @@ function Calculator() {
             handleSliderChange={handleSliderChange}
             handleInputChange={handleInputChange}
             handleBlur={handleBlur}
-            invalidInputBoxType={invalidInputBoxType}
             currInputBoxType={currInputBoxType}
           />
         </div>

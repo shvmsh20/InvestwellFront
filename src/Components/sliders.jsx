@@ -216,7 +216,8 @@ function SliderArea(props) {
             />
           </Grid>
         </Grid>
-        {props.invalidInputBoxType===props.type && <div className="errField">Invalid input</div>}
+        {((props.inputBoxValue<props.min || props.inputBoxValue>props.max) && props.currInputBoxType===props.type) 
+        && <div className="errField">Invalid input</div>}
 
         <Grid container>
           <Grid item xs>
