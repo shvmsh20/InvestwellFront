@@ -72,7 +72,7 @@ function GraphArea(props) {
   return (
     <div className="rightContainer">
       <p className="graphText">
-        Delay of 
+        Delay of &nbsp;
         <span className="delay">
           {props.delay} {props.delay > 1 ? " months " : " month "}
         </span>
