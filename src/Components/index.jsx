@@ -131,60 +131,52 @@ function Calculator() {
       <div className="outerContainer">
         <div class="leftContainer">
           <SliderArea
-            index={0}
             type="monthlyInvestment"
             min={500}
             max={100000}
             steps={50}
             value={monthlyInvestment}
+            currInputBoxType={currInputBoxType}
             inputBoxValue={inputBoxValue}
-            onSliderChange={onSliderChange}
             handleSliderChange={handleSliderChange}
             handleInputChange={handleInputChange}
             handleBlur={handleBlur}
-            currInputBoxType={currInputBoxType}
           />
           <SliderArea
-            index={1}
             type="investmentPeriod"
             min={1}
             max={30}
             steps={1}
             value={investmentPeriod}
+            currInputBoxType={currInputBoxType}
             inputBoxValue={inputBoxValue}
-            onSliderChange={onSliderChange}
             handleSliderChange={handleSliderChange}
             handleInputChange={handleInputChange}
             handleBlur={handleBlur}
-            currInputBoxType={currInputBoxType}
           />
           <SliderArea
-            index={2}
             type="rateOfReturn"
             min={1}
             max={30}
             steps={0.1}
             value={rateOfReturn}
+            currInputBoxType={currInputBoxType}
             inputBoxValue={inputBoxValue}
-            onSliderChange={onSliderChange}
             handleSliderChange={handleSliderChange}
             handleInputChange={handleInputChange}
             handleBlur={handleBlur}
-            currInputBoxType={currInputBoxType}
           />
           <SliderArea
-            index={3}
             type="delay"
             min={1}
             max={120}
             steps={1}
             value={delay}
+            currInputBoxType={currInputBoxType}
             inputBoxValue={inputBoxValue}
-            onSliderChange={onSliderChange}
             handleSliderChange={handleSliderChange}
             handleInputChange={handleInputChange}
-            handleBlur={handleBlur}
-            currInputBoxType={currInputBoxType}
+            handleBlur={handleBlur} 
           />
         </div>
         {err ? (

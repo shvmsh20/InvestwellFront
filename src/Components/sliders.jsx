@@ -81,7 +81,7 @@ const ipArray = [
   }
 ];
 
-const errArray = [
+const rorArray = [
   {
     value: 1,
     label: "1",
@@ -175,14 +175,19 @@ const delayArray = [
   }
 ];
 
-const labelArr = [miArray, ipArray, errArray, delayArray];
+const labelArr = {
+  monthlyInvestment:miArray, 
+  investmentPeriod:ipArray, 
+  rateOfReturn:rorArray, 
+  delay:delayArray
+};
 
-const titleArr = [
-  "Monthly Investment (Rs.)",
-  "Investment Period (in years)",
-  "Expected Rate of Return (%p.a)",
-  "Delay in Staring SIP (in months)",
-];
+const titleArr = {
+  monthlyInvestment:"Monthly Investment (Rs.)",
+  investmentPeriod:"Investment Period (in years)",
+  rateOfReturn:"Expected Rate of Return (%p.a)",
+  delay:"Delay in Staring SIP (in months)",
+}
 
 function valuetext(value) {
   return `${value}`;
@@ -199,7 +204,7 @@ function SliderArea(props) {
       <Box>
         <Grid container className="grid">
           <Grid item >
-            <Typography gutterBottom>{titleArr[props.index]}</Typography>
+            <Typography gutterBottom>{titleArr[props.type]}</Typography>
           </Grid>
           <Grid item className="gridItem">
             <CustomInput
@@ -228,7 +233,7 @@ function SliderArea(props) {
               min={props.min}
               max={props.max}
               step={props.steps}
-              marks={labelArr[props.index]}
+              marks={labelArr[props.type]}
               value={props.value}
               onChange={(event, newValue)=>props.handleSliderChange(event, newValue, props.type)}
               aria-labelledby="input-slider"
