@@ -14,8 +14,7 @@ function Calculator() {
   const [invalidInputBox, setInvalidInputBox] = useState();
   const [inputBoxValue, setInputBoxValue] = useState();
 
-  const [graphData, setGraphData] = useState({});
-  const [err, setErr] = useState(false);
+  const [graphData, setGraphData] = useState({invalid: false});
 
   const isValid = (val, min, max)=>{
     if(val<min || val>max){
@@ -77,13 +76,13 @@ function Calculator() {
         // for backend validation and showing the error page
         if (res.data && res.data.status === 0) {
           setGraphData(res.data.result);
-          setErr(false);
         } else {
-          setErr(true);
+          setGraphData({invalid: true});
         }
+        
       })
       .catch((error) => {
-        setErr(true);
+        setGraphData({invalid: true});
       });
   }, [monthlyInvestment, investmentPeriod, rateOfReturn, delay]);
 
@@ -137,7 +136,7 @@ function Calculator() {
             onChange={(event, inputBoxType, eventType, min, max)=>onChange(event, inputBoxType, eventType, min, max)}
           />
         </div>
-        {err ? (
+        {graphData.invalid ? (
           <ErrorPage />
         ) : (
           <GraphArea
