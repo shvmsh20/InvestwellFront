@@ -26,8 +26,7 @@ function Calculator() {
 
   const onChange = (event, inputBoxType, eventType, min, max)=>{
     const val = event.target.value;
-    let sliderValue = Number(val);
-    console.log(sliderValue);
+    let sliderValue =  Number(val);
     
     if(!isValid(sliderValue, min, max)){
       setInvalidInputBox(inputBoxType);
