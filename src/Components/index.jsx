@@ -23,7 +23,8 @@ function Calculator() {
     }
     return true;
   }
-  const onChange = (event, inputBoxType, inputType, min, max)=>{
+
+  const onChange = (event, inputBoxType, eventType, min, max)=>{
     const val = event.target.value;
     let sliderValue = val==='' ? 0 : parseInt(val);
     
@@ -34,7 +35,7 @@ function Calculator() {
       setInvalidInputBox('');
     }
 
-    if(inputType==="blur"){
+    if(eventType==="blur"){
       setInvalidInputBox('');
     }
     
@@ -102,7 +103,7 @@ function Calculator() {
             value={monthlyInvestment}
             inputBoxValue={inputBoxValue}
             invalidInputBox={invalidInputBox}
-            onChange={(event, inputBoxType, inputType, min, max)=>onChange(event, inputBoxType, inputType, min, max)}
+            onChange={(event, inputBoxType, eventType, min, max)=>onChange(event, inputBoxType, eventType, min, max)}
           />
           <SliderArea
             type="investmentPeriod"
@@ -112,7 +113,7 @@ function Calculator() {
             value={investmentPeriod}
             inputBoxValue={inputBoxValue}
             invalidInputBox={invalidInputBox}
-            onChange={(event, inputBoxType, inputType, min, max)=>onChange(event, inputBoxType, inputType, min, max)}
+            onChange={(event, inputBoxType, eventType, min, max)=>onChange(event, inputBoxType, eventType, min, max)}
           />
           <SliderArea
             type="rateOfReturn"
@@ -122,7 +123,7 @@ function Calculator() {
             value={rateOfReturn}
             inputBoxValue={inputBoxValue}
             invalidInputBox={invalidInputBox}
-            onChange={(event, inputBoxType, inputType, min, max)=>onChange(event, inputBoxType, inputType, min, max)}
+            onChange={(event, inputBoxType, eventType, min, max)=>onChange(event, inputBoxType, eventType, min, max)}
           />
           <SliderArea
             type="delay"
@@ -132,7 +133,7 @@ function Calculator() {
             value={delay}
             invalidInputBox={invalidInputBox}
             inputBoxValue={inputBoxValue}
-            onChange={(event, inputBoxType, inputType, min, max)=>onChange(event, inputBoxType, inputType, min, max)}
+            onChange={(event, inputBoxType, eventType, min, max)=>onChange(event, inputBoxType, eventType, min, max)}
           />
         </div>
         {err ? (
