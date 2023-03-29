@@ -56,12 +56,8 @@ function GraphArea(props) {
     if (active && payload && payload.length) {
       return (
         <div className="customTooltip">
-          <p>
-            <span className="labelData">{label === "Start Today" || label === "Delayed Start"
-              ? "Amount Accumulated : "
-              : "Notional Loss : "} </span>{"₹"}
-            <span className="tooltipAmount">{formatValue(label)}</span>
-          </p>
+            <div className="labelData">{label} </div>
+            <div className="tooltipAmount">₹{formatValue(label)}</div>
         </div>
       );
     }
@@ -102,13 +98,18 @@ function GraphArea(props) {
               }}
             ></Label>
           </YAxis>
-          <Tooltip cursor={false} content={<CustomTooltip />} 
+          {/* <Tooltip cursor={false} content={<CustomTooltip />} 
           position={{ y: 0 }}
           allowEscapeViewBox={{ x: true, y: true }}
           wrapperStyle={{ outline: "none" }}
-
-            
+            /> */}
+            {/* <Tooltip cursor={false} formatter={(value) => new Intl.NumberFormat('en').format(value)}
+            /> */}
+            <Tooltip cursor={false} content={<CustomTooltip />} 
+                allowEscapeViewBox={{ x: true, y: true }}
+    
             />
+          
           <Bar dataKey="Amount"   />
         </BarChart>
       </ResponsiveContainer>

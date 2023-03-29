@@ -77,14 +77,12 @@
   font-family: sans-serif;
 }
 .rightMain .rightContainer .customTooltip {
+  border: 1px solid black;
+  padding: 5px;
+  background-color: #fff;
   text-align: left;
-  top: 0;
-  left: 0;
-}
-.rightMain .rightContainer .customTooltip .labelData {
-  font-weight: bold;
-  font-size: small;
-  margin: 3px 9px;
+  font-weight: 500;
+  position: relative;
 }
 .rightMain .rightContainer .barGraph {
   margin: 20px;
@@ -93,6 +91,14 @@
   margin: 40px 0px 40px 30px;
   width: 90%;
   width: 90%;
+}
+.rightMain .sliders .errField {
+  text-align: right;
+  color: #DF2E38;
+  padding: 3px;
+  font-size: 14px;
+  margin: 2px 0px;
+  right: 0;
 }
 .rightMain .grid {
   position: relative;
@@ -105,14 +111,7 @@
   background-color: #F1F5FA;
   width: 90%;
 }
-.rightMain .sliders .errField {
-  color: white;
-  background-color: #DF2E38;
-  padding: 3px;
-  font-size: 14px;
-  margin: 2px 0px;
-}
-.rightMain .rightMain .errorPage {
+.rightMain .errorPage {
   position: absolute;
   width: 46%;
   height: 96.5%;
@@ -124,11 +123,11 @@
   text-transform: uppercase;
   font-family: "Montserrat";
 }
-.rightMain .rightMain .errorPage h1 {
+.rightMain .errorPage .heading {
   color: #DF2E38;
   margin: 200px 0px 0px 180px;
 }
-.rightMain .rightMain .errorPage h2 {
+.rightMain .errorPage .subHeading {
   display: block;
   color: #DF2E38;
   font-size: 20px;

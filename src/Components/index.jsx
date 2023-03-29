@@ -63,6 +63,7 @@ function Calculator() {
   //Api calling
 
   useEffect(() => {
+
     axios
       .get("/getResults", {
         params: {
