@@ -82,7 +82,6 @@ function GraphArea(props) {
         <BarChart
           className="barGraph"
           data={Array}
-          
         >
           <XAxis dataKey="label" fill="#5E73EB" />
           <YAxis width={110} tickFormatter={formatYAxis}>
@@ -98,16 +97,9 @@ function GraphArea(props) {
               }}
             ></Label>
           </YAxis>
-          {/* <Tooltip cursor={false} content={<CustomTooltip />} 
-          position={{ y: 0 }}
-          allowEscapeViewBox={{ x: true, y: true }}
-          wrapperStyle={{ outline: "none" }}
-            /> */}
-            {/* <Tooltip cursor={false} formatter={(value) => new Intl.NumberFormat('en').format(value)}
-            /> */}
+         
             <Tooltip cursor={false} content={<CustomTooltip />} 
                 allowEscapeViewBox={{ x: true, y: true }}
-    
             />
           
           <Bar dataKey="Amount"   />
