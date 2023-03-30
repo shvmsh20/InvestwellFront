@@ -34,6 +34,7 @@ $error-color:#df2e38;
         border: none;
         background: none;
     }
+
     .rightMain {
         background-color: $main-color;
         padding: 10px;
@@ -60,26 +61,27 @@ $error-color:#df2e38;
                 border: 1px solid $border-color;
                 margin: 10px;
                 display: inline-block;
+
                 .sliders {
                     margin: 40px 0px 40px 30px;
                     width: 90%;
                     width: 90%;
                 }
-        
+
                 .grid {
                     position: relative;
                 }
-        
+
                 .gridItem {
                     position: absolute;
                     right: 0;
                 }
-        
+
                 .inputBox {
                     background-color: #f1f5fa;
                     width: 90%;
                 }
-        
+
                 .errField {
                     color: $error-color;
                     padding: 3px;
@@ -87,7 +89,7 @@ $error-color:#df2e38;
                     margin: 2px 0px;
                     text-align: right;
                 }
-        
+
             }
 
             .rightContainer {

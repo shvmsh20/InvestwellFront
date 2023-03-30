@@ -56,35 +56,29 @@ function GraphArea(props) {
     if (active && payload && payload.length) {
       return (
         <div className="customTooltip">
-          <p>
-            <span className="labelData">{label} </span><br/>
-            <span className="tooltipAmount">₹ {formatValue(label)}</span>
-          </p>
+          <div className="labelData">{label} </div>
+          <div className="tooltipAmount">₹{formatValue(label)}</div>
         </div>
       );
     }
   };
 
-  
-
   return (
     <div className="rightContainer">
       <p className="graphText">
-        Delay of{" "}
+        Delay of &nbsp;
         <span className="delay">
-          {props.delay} {props.delay > 1 ? "months" : "month"}{" "}
-        </span>{" "}
+          {props.delay} {props.delay > 1 ? " months " : " month "}
+        </span>
         in starting your SIP will cause a notional loss of
         <span className="notionalLoss">
-          <br />₹{toIndianRupees(props.graphData && props.graphData.notionalLoss)}
+          <br />₹
+          {toIndianRupees(props.graphData && props.graphData.notionalLoss)}
         </span>
         <br /> in the final value of your investment.
       </p>
       <ResponsiveContainer height="40%" width="80%" aspect={1.3}>
-        <BarChart
-          className="barGraph"
-          data={Array}
-        >
+        <BarChart className="barGraph" data={Array}>
           <XAxis dataKey="label" fill="#5E73EB" />
           <YAxis width={110} tickFormatter={formatYAxis}>
             <Label
@@ -99,12 +93,14 @@ function GraphArea(props) {
               }}
             ></Label>
           </YAxis>
-          <Tooltip cursor={false} content={<CustomTooltip />} 
-          wrapperStyle={{ outline: "none" }}
-          allowEscapeViewBox={{ x: true, y: true }}
+          <Tooltip
+            cursor={false}
+            content={<CustomTooltip />}
+            wrapperStyle={{ outline: "none" }}
+            allowEscapeViewBox={{ x: true, y: true }}
+          />
 
-            />
-          <Bar dataKey="Amount"    />
+          <Bar dataKey="Amount" />
         </BarChart>
       </ResponsiveContainer>
     </div>

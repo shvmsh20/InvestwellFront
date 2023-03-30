@@ -5,99 +5,64 @@ import GraphArea from "../../src/Components/graphArea";
 import ErrorPage from "../../src/Components/errorPage";
 
 function Calculator() {
+
   const [monthlyInvestment, setMonthlyInvestment] = useState(500);
   const [investmentPeriod, setInvestmentPeriod] = useState(1);
   const [rateOfReturn, setRateOfReturn] = useState(1);
   const [delay, setDelay] = useState(1);
 
-  const [currInputBoxType, setCurrInputBoxType] = useState();
+  const [invalidInputBox, setInvalidInputBox] = useState();
   const [inputBoxValue, setInputBoxValue] = useState();
 
+  const [graphData, setGraphData] = useState({invalid: false});
 
-  const [graphData, setGraphData] = useState({});
-  const [err, setErr] = useState(false);
-  
-
-
-
-  //Set Values of monthly investment, rate of return, investmment period, delay
-
-  function onSliderChange(type, val) {
-    switch (type) {
-      case "monthlyInvestment":
-        setMonthlyInvestment(val);
-        break;
-      case "investmentPeriod":
-        setInvestmentPeriod(val);
-        break;
-      case "rateOfReturn":
-        setRateOfReturn(val);
-        break;
-      case "delay":
-        setDelay(val);
-        break;
-      default:
-        break;
+  const isValid = (val, min, max)=>{
+    if(val<min || val>max){
+      return false;
     }
+    return true;
   }
 
-
-  const setRange = (type) => {
-    switch (type) {
-      case "monthlyInvestment":
-        return [500, 100000];
-      case "investmentPeriod":
-        return [1, 30];
-      case "rateOfReturn":
-        return [1, 30];
-      case "delay":
-        return [1, 120];
-      default:
-        break;  
-    }
-  };
-
- 
-  const onChange = (event, inputBoxType, inputType)=>{
+  const onChange = (event, inputBoxType, eventType, min, max)=>{
     const val = event.target.value;
-    if(inputType==="slider"){
-      onSliderChange(inputBoxType, val);
-      setInputBoxValue(val);
+    let sliderValue =  Number(val);
+    
+    if(!isValid(sliderValue, min, max)){
+      setInvalidInputBox(inputBoxType);
+      sliderValue = sliderValue<min? min: max;
     }else{
-      const [min, max] = setRange(inputBoxType);
-      
-      setCurrInputBoxType(inputBoxType)
-      setInputBoxValue(val);
-      
-      if (Number(val) < min) {
-        onSliderChange(inputBoxType, min);
-      } else if (Number(val) > max) {
-        onSliderChange(inputBoxType, max);
-      } else {
-        onSliderChange(inputBoxType, Number(val));
-      }
+      setInvalidInputBox('');
+    }
+
+    if(eventType==="blur"){
+      setInvalidInputBox('');
+    }
+    
+    setInputBoxValue(val);
+
+    switch (inputBoxType) {
+      case "monthlyInvestment":
+        setMonthlyInvestment(sliderValue);
+        break;
+      case "investmentPeriod":
+        setInvestmentPeriod(sliderValue);
+        break;
+      case "rateOfReturn":
+        setRateOfReturn(sliderValue);
+        break;
+      case "delay":
+        setDelay(sliderValue);
+        break;
+      default:
+        break;
     }
   }
 
-  const handleBlur = (event, type) => {
-    setCurrInputBoxType('')
-
-    const [min, max] = setRange(type);
-
-    const val = event.target.value;
-
-    if (Number(val) < min) {
-      onSliderChange(type, min);
-    } else if (Number(val) > max) {
-      onSliderChange(type, max);
-    }
-  };
-
- 
 
   //Api calling
 
   useEffect(() => {
+
     axios
       .get("/getResults", {
         params: {
@@ -111,13 +76,13 @@ function Calculator() {
         // for backend validation and showing the error page
         if (res.data && res.data.status === 0) {
           setGraphData(res.data.result);
-          setErr(false);
         } else {
-          setErr(true);
+          setGraphData({invalid: true});
         }
+        
       })
       .catch((error) => {
-        setErr(true);
+        setGraphData({invalid: true});
       });
   }, [monthlyInvestment, investmentPeriod, rateOfReturn, delay]);
 
@@ -136,10 +101,9 @@ function Calculator() {
             max={100000}
             steps={50}
             value={monthlyInvestment}
-            currInputBoxType={currInputBoxType}
             inputBoxValue={inputBoxValue}
-            onChange={onChange}
-            handleBlur={handleBlur}
+            invalidInputBox={invalidInputBox}
+            onChange={(event, inputBoxType, eventType, min, max)=>onChange(event, inputBoxType, eventType, min, max)}
           />
           <SliderArea
             type="investmentPeriod"
@@ -147,10 +111,9 @@ function Calculator() {
             max={30}
             steps={1}
             value={investmentPeriod}
-            currInputBoxType={currInputBoxType}
             inputBoxValue={inputBoxValue}
-            onChange={onChange}
-            handleBlur={handleBlur}
+            invalidInputBox={invalidInputBox}
+            onChange={(event, inputBoxType, eventType, min, max)=>onChange(event, inputBoxType, eventType, min, max)}
           />
           <SliderArea
             type="rateOfReturn"
@@ -158,10 +121,9 @@ function Calculator() {
             max={30}
             steps={0.1}
             value={rateOfReturn}
-            currInputBoxType={currInputBoxType}
             inputBoxValue={inputBoxValue}
-            onChange={onChange}
-            handleBlur={handleBlur} 
+            invalidInputBox={invalidInputBox}
+            onChange={(event, inputBoxType, eventType, min, max)=>onChange(event, inputBoxType, eventType, min, max)}
           />
           <SliderArea
             type="delay"
@@ -169,13 +131,12 @@ function Calculator() {
             max={120}
             steps={1}
             value={delay}
-            currInputBoxType={currInputBoxType}
+            invalidInputBox={invalidInputBox}
             inputBoxValue={inputBoxValue}
-            onChange={onChange}
-            handleBlur={handleBlur}  
+            onChange={(event, inputBoxType, eventType, min, max)=>onChange(event, inputBoxType, eventType, min, max)}
           />
         </div>
-        {err ? (
+        {graphData.invalid ? (
           <ErrorPage />
         ) : (
           <GraphArea
