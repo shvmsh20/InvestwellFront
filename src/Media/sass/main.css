@@ -1,23 +1,23 @@
 * {
   box-sizing: border-box;
   font-family: sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 .leftSideBox {
   position: relative;
-  background: #526FE4;
+  background: #526fe4;
   width: 15%;
   height: 100vh;
   display: inline-block;
-  overflow-x: hidden;
 }
 
 .rightSideBox {
   display: inline-block;
   width: 85%;
-  height: 100vh;
   position: absolute;
-  background-color: #F1F5FA;
+  background-color: #f1f5fa;
 }
 .rightSideBox .backBtn {
   font-weight: 550;
@@ -26,139 +26,155 @@
   border: none;
   background: none;
 }
-
-.rightMain {
-  background-color: #fff;
+.rightSideBox .rightMain {
+  background-color: #ffffff;
   padding: 10px;
   margin: 20px;
   position: relative;
 }
-.rightMain .info {
+.rightSideBox .rightMain .info {
   font-weight: 400;
   margin: 10px;
 }
-.rightMain .heading {
+.rightSideBox .rightMain .heading {
   font-weight: 300;
   margin: 10px;
 }
-.rightMain .outerContainer {
+.rightSideBox .rightMain .outerContainer {
   position: relative;
+  width: inherit;
 }
-.rightMain .leftContainer {
+.rightSideBox .rightMain .outerContainer .leftContainer {
   width: 50%;
   height: inherit;
-  border: 1px solid #EAEBED;
+  border: 1px solid #eaebed;
   margin: 10px;
   display: inline-block;
 }
-.rightMain .rightContainer {
-  position: absolute;
-  width: 48%;
-  display: inline-block;
-  border: 1px solid #EAEBED;
-  margin: 10px;
-  padding: 20px;
-}
-.rightMain .rightContainer .graphText {
-  align-items: center;
-  color: #626161;
-  line-height: 1.5;
-  padding-bottom: 12px;
-}
-.rightMain .rightContainer .notionalLoss {
-  color: #DF2E38;
-  font-weight: bold;
-  font-family: sans-serif;
-  font-size: 22px;
-}
-.rightMain .rightContainer .delay {
-  color: #506EE4;
-  font-weight: bold;
-  font-family: sans-serif;
-}
-.rightMain .rightContainer .customTooltip {
-  text-align: left;
-  top: 0;
-  left: 0;
-}
-.rightMain .rightContainer .customTooltip .labelData {
-  font-weight: bold;
-  font-size: small;
-  margin: 3px 9px;
-}
-.rightMain .rightContainer .barGraph {
-  margin: 20px;
-}
-.rightMain .sliders {
+.rightSideBox .rightMain .outerContainer .leftContainer .sliders {
   margin: 40px 0px 40px 30px;
   width: 90%;
   width: 90%;
 }
-.rightMain .grid {
+.rightSideBox .rightMain .outerContainer .leftContainer .grid {
   position: relative;
 }
-.rightMain .gridItem {
+.rightSideBox .rightMain .outerContainer .leftContainer .gridItem {
   position: absolute;
   right: 0;
 }
-.rightMain .inputBox {
-  background-color: #F1F5FA;
+.rightSideBox .rightMain .outerContainer .leftContainer .inputBox {
+  background-color: #f1f5fa;
   width: 90%;
 }
-.rightMain .sliders .errField {
-  color: white;
-  background-color: #DF2E38;
+.rightSideBox .rightMain .outerContainer .leftContainer .errField {
+  color: #df2e38;
   padding: 3px;
   font-size: 14px;
   margin: 2px 0px;
+  text-align: right;
 }
-.rightMain .rightMain .errorPage {
+.rightSideBox .rightMain .outerContainer .rightContainer {
+  position: absolute;
+  width: 48%;
+  height: 96.7%;
+  display: inline-block;
+  border: 1px solid #eaebed;
+  margin: 10px 15px 0px 0px;
+}
+.rightSideBox .rightMain .outerContainer .rightContainer .graphText {
+  align-items: center;
+  color: #626161;
+  line-height: 1.5;
+  padding: 0px 0px 11px 5px;
+}
+.rightSideBox .rightMain .outerContainer .rightContainer .notionalLoss {
+  color: #df2e38;
+  font-weight: bold;
+  font-family: sans-serif;
+  font-size: 22px;
+}
+.rightSideBox .rightMain .outerContainer .rightContainer .delay {
+  color: #506ee4;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+.rightSideBox .rightMain .outerContainer .rightContainer .customTooltip {
+  font-family: sans-serif;
+  border: #626161 1px solid;
+  padding: 5px;
+  text-align: left;
+  background-color: #ffffff;
+}
+.rightSideBox .rightMain .outerContainer .rightContainer .barGraph {
+  margin: 20px;
+}
+.rightSideBox .rightMain .outerContainer .rightContainer .bar {
+  width: 100%;
+}
+.rightSideBox .rightMain .errorPage {
   position: absolute;
   width: 46%;
   height: 96.5%;
   display: inline-block;
-  border: 1px solid #EAEBED;
+  border: 1px solid #eaebed;
   margin: 10px;
   padding: 15px;
   justify-content: center;
   text-transform: uppercase;
   font-family: "Montserrat";
 }
-.rightMain .rightMain .errorPage h1 {
-  color: #DF2E38;
+.rightSideBox .rightMain .errorPage .errHeading {
+  color: #df2e38;
   margin: 200px 0px 0px 180px;
 }
-.rightMain .rightMain .errorPage h2 {
+.rightSideBox .rightMain .errorPage .errSubHeading {
   display: block;
-  color: #DF2E38;
+  color: #df2e38;
   font-size: 20px;
   justify-content: center;
   margin: 0px 0px 0px 118px;
 }
 
-@media (max-width: 1300px), (max-height: 300px) {
-  .rightMain .rightContainer {
-    display: block;
-    width: 90%;
-  }
-  .rightMain .leftContainer {
-    width: 90%;
-  }
-  .rightMain .sliders {
-    width: 90%;
-  }
-  .rightMain .rightSideBox {
-    width: 100%;
+@media screen and (max-width: 1300px), (max-height: 300px) {
+  .rightSideBox {
+    height: auto;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background-color: #ffffff;
   }
   .leftSideBox {
     position: relative;
+    overflow: hidden;
+    max-height: 1000px;
+  }
+  #root .rightMain .rightContainer {
+    display: block;
+    position: absolute;
+    width: 96%;
+    margin: 10px;
+  }
+  #root .rightMain .leftContainer {
+    width: 95%;
+  }
+  #root .rightMain .sliders {
+    width: 80%;
+  }
+  #root .rightMain .barGraph {
+    margin: 10px;
   }
 }
-@media screen and (max-width: 768px) {
-  .leftSideBox {
-    display: none;
-  }
+@media (max-width: 768px) {
   .rightSideBox {
     width: 100%;
+  }
+  .rightSideBox .leftContainer {
+    width: 100%;
+  }
+  .rightSideBox .rightContainer {
+    width: 100%;
+  }
+  .leftSideBox {
+    display: none;
   }
 }/*# sourceMappingURL=main.css.map */

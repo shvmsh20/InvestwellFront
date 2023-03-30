@@ -1,23 +1,31 @@
+$border-color: #eaebed;
+$left-side-box: #526fe4;
+$loss-color: #df2e38;
+$main-color: #ffffff;
+$right-side-box: #f1f5fa;
+$font: sans-serif;
+$error-color:#df2e38;
+
 * {
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: $font;
+    margin: 0;
+    padding: 0;
 }
 
 .leftSideBox {
     position: relative;
-    background: #526FE4;
+    background: $left-side-box;
     width: 15%;
     height: 100vh;
     display: inline-block;
-    overflow-x: hidden;
 }
 
 .rightSideBox {
     display: inline-block;
     width: 85%;
-    height: 100vh;
     position: absolute;
-    background-color: #F1F5FA;
+    background-color: $right-side-box;
 
     .backBtn {
         font-weight: 550;
@@ -26,186 +34,187 @@
         border: none;
         background: none;
     }
-
-}
-
-.rightMain {
-    background-color: #fff;
-    padding: 10px;
-    margin: 20px;
-    position: relative;
-
-    .info {
-        font-weight: 400;
-        margin: 10px;
-    }
-
-    .heading {
-        font-weight: 300;
-        margin: 10px;
-    }
-
-    .outerContainer {
-        position: relative;
-    }
-
-    .leftContainer {
-        width: 50%;
-        height: inherit;
-        border: 1px solid #EAEBED;
-        margin: 10px;
-        display: inline-block;
-    }
-
-
-    .rightContainer {
-        position: absolute;
-        width: 48%;
-        display: inline-block;
-        border: 1px solid #EAEBED;
-        margin: 10px;
-        padding: 20px;
-
-        .graphText {
-            align-items: center;
-            color: #626161;
-            line-height: 1.5;
-            padding-bottom: 12px;
-        }
-
-        .notionalLoss {
-            color: #DF2E38;
-            font-weight: bold;
-            font-family: sans-serif;
-            font-size: 22px;
-        }
-
-        .delay {
-            color: #506EE4;
-            font-weight: bold;
-            font-family: sans-serif;
-        }
-
-        .customTooltip {
-            // font-family: sans-serif;
-            text-align: left;
-            // border-radius: 12px;
-            // position: absolute;
-            top: 0;
-            left: 0;
-       
-            // padding: 5px;
-        }
-
-        .customTooltip .labelData {
-            font-weight: bold;
-            font-size: small;
-            margin: 3px 9px;
-
-        }
-
-        .barGraph {
-            margin: 20px;
-        }
-    }
-
-    .sliders {
-        margin: 40px 0px 40px 30px;
-        width: 90%;
-        width: 90%;
-    }
-
-
-    .grid {
-        position: relative;
-    }
-
-
-    .gridItem {
-        position: absolute;
-        right: 0;
-    }
-
-    .inputBox {
-        background-color: #F1F5FA;
-        width: 90%;
-    }
-
-    .sliders .errField {
-        color: white;
-        background-color: #DF2E38;
-        padding: 3px;
-        font-size: 14px;
-        margin: 2px 0px;
-
-    }
-
-    .rightMain .errorPage {
-        position: absolute;
-        width: 46%;
-        height: 96.5%;
-        display: inline-block;
-        border: 1px solid #EAEBED;
-        margin: 10px;
-        padding: 15px;
-        justify-content: center;
-        text-transform: uppercase;
-        font-family: 'Montserrat';
-    }
-
-    .rightMain .errorPage h1 {
-        color: #DF2E38;
-        margin: 200px 0px 0px 180px;
-    }
-
-    .rightMain .errorPage h2 {
-        display: block;
-        color: #DF2E38;
-        font-size: 20px;
-        justify-content: center;
-        margin: 0px 0px 0px 118px;
-    }
-
-}
-
-
-@media  (max-width:1300px ), (max-height: 300px)  {
-
     .rightMain {
+        background-color: $main-color;
+        padding: 10px;
+        margin: 20px;
+        position: relative;
+
+        .info {
+            font-weight: 400;
+            margin: 10px;
+        }
+
+        .heading {
+            font-weight: 300;
+            margin: 10px;
+        }
+
+        .outerContainer {
+            position: relative;
+            width: inherit;
+
+            .leftContainer {
+                width: 50%;
+                height: inherit;
+                border: 1px solid $border-color;
+                margin: 10px;
+                display: inline-block;
+                .sliders {
+                    margin: 40px 0px 40px 30px;
+                    width: 90%;
+                    width: 90%;
+                }
+        
+                .grid {
+                    position: relative;
+                }
+        
+                .gridItem {
+                    position: absolute;
+                    right: 0;
+                }
+        
+                .inputBox {
+                    background-color: #f1f5fa;
+                    width: 90%;
+                }
+        
+                .errField {
+                    color: $error-color;
+                    padding: 3px;
+                    font-size: 14px;
+                    margin: 2px 0px;
+                    text-align: right;
+                }
+        
+            }
+
+            .rightContainer {
+                position: absolute;
+                width: 48%;
+                height: 96.7%;
+                display: inline-block;
+                border: 1px solid $border-color;
+                margin: 10px 15px 0px 0px;
+
+                .graphText {
+                    align-items: center;
+                    color: #626161;
+                    line-height: 1.5;
+                    padding: 0px 0px 11px 5px;
+                }
+
+                .notionalLoss {
+                    color: $loss-color;
+                    font-weight: bold;
+                    font-family: $font;
+                    font-size: 22px;
+                }
+
+                .delay {
+                    color: #506ee4;
+                    font-weight: bold;
+                    font-family: $font;
+                }
+
+                .customTooltip {
+                    font-family: $font;
+                    border: #626161 1px solid;
+                    padding: 5px;
+                    text-align: left;
+                    background-color: $main-color;
+                }
+
+                .barGraph {
+                    margin: 20px;
+                }
+
+                .bar {
+                    width: 100%;
+                }
+            }
+        }
+
+        .errorPage {
+            position: absolute;
+            width: 46%;
+            height: 96.5%;
+            display: inline-block;
+            border: 1px solid $border-color;
+            margin: 10px;
+            padding: 15px;
+            justify-content: center;
+            text-transform: uppercase;
+            font-family: "Montserrat";
+
+            .errHeading {
+                color: #df2e38;
+                margin: 200px 0px 0px 180px;
+            }
+
+            .errSubHeading {
+                display: block;
+                color: #df2e38;
+                font-size: 20px;
+                justify-content: center;
+                margin: 0px 0px 0px 118px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1300px),
+(max-height: 300px) {
+    .rightSideBox {
+        height: auto;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        background-color: $main-color;
+    }
+
+    .leftSideBox {
+        position: relative;
+        overflow: hidden;
+        max-height: 1000px;
+    }
+
+    #root .rightMain {
         .rightContainer {
             display: block;
-            width: 90%;
+            position: absolute;
+            width: 96%;
+            margin: 10px;
         }
 
         .leftContainer {
-            width: 90%;
+            width: 95%;
         }
 
         .sliders {
-            width: 90%;
+            width: 80%;
         }
-        .rightSideBox{
+
+        .barGraph {
+            margin: 10px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .rightSideBox {
+        width: 100%;
+
+        .leftContainer {
+            width: 100%;
+        }
+
+        .rightContainer {
             width: 100%;
         }
     }
-    .leftSideBox {
-        position: relative;
-    }
-
-
-
-
-}
-
-@media screen and (max-width:768px) {
-
 
     .leftSideBox {
         display: none;
     }
-
-    .rightSideBox {
-        width: 100%;
-    }
-
 }

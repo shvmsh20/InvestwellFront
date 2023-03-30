@@ -29,7 +29,7 @@ function GraphArea(props) {
     {
       label: "Notional Loss",
       Amount: props.graphData && props.graphData.notionalLoss,
-      fill: "#FF0000",
+      fill: "#DF2E38",
     },
   ];
 
@@ -57,10 +57,8 @@ function GraphArea(props) {
       return (
         <div className="customTooltip">
           <p>
-            <span className="labelData">{label === "Start Today" || label === "Delayed Start"
-              ? "Amount Accumulated : "
-              : "Notional Loss : "} </span>{"₹"}
-            <span className="tooltipAmount">{formatValue(label)}</span>
+            <span className="labelData">{label} </span><br/>
+            <span className="tooltipAmount">₹ {formatValue(label)}</span>
           </p>
         </div>
       );
@@ -86,7 +84,6 @@ function GraphArea(props) {
         <BarChart
           className="barGraph"
           data={Array}
-          
         >
           <XAxis dataKey="label" fill="#5E73EB" />
           <YAxis width={110} tickFormatter={formatYAxis}>
@@ -103,13 +100,11 @@ function GraphArea(props) {
             ></Label>
           </YAxis>
           <Tooltip cursor={false} content={<CustomTooltip />} 
-          position={{ y: 0 }}
-          allowEscapeViewBox={{ x: true, y: true }}
           wrapperStyle={{ outline: "none" }}
+          allowEscapeViewBox={{ x: true, y: true }}
 
-            
             />
-          <Bar dataKey="Amount"   />
+          <Bar dataKey="Amount"    />
         </BarChart>
       </ResponsiveContainer>
     </div>
