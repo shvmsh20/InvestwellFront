@@ -20,77 +20,62 @@ $error-color:#df2e38;
     height: 100vh;
     display: inline-block;
 }
-
 .rightSideBox {
     display: inline-block;
     width: 85%;
     position: absolute;
     background-color: $right-side-box;
-
     .backBtn {
+        font-weight: 550;
         font-size: medium;
         margin: 10px;
         border: none;
         background: none;
-        cursor: pointer;
     }
-
     .rightMain {
         background-color: $main-color;
         padding: 10px;
         margin: 20px;
         position: relative;
-
         .info {
             font-weight: 400;
             margin: 10px;
         }
-
         .heading {
             font-weight: 300;
             margin: 10px;
         }
-
         .outerContainer {
             position: relative;
             width: inherit;
-
             .leftContainer {
                 width: 50%;
                 height: inherit;
                 border: 1px solid $border-color;
                 margin: 10px;
                 display: inline-block;
-
                 .sliders {
                     margin: 40px 0px 40px 30px;
                     width: 90%;
+                    .grid {
+                        position: relative;
+                        .gridItem {
+                            position: absolute;
+                            right: 0;
+                            .inputBox {
+                                background-color: #f1f5fa;
+                            }
+                        }
+                    }
+                    .errField {
+                        color: $error-color;
+                        padding: 3px;
+                        font-size: 14px;
+                        margin: 2px 0px;
+                        text-align: right;
+                    }
                 }
-
-                .grid {
-                    position: relative;
-                }
-
-                .gridItem {
-                    position: absolute;
-                    right: 0;
-                }
-
-                .inputBox {
-                    background-color: #f1f5fa;
-                    width: 90%;
-                }
-
-                .errField {
-                    color: $error-color;
-                    padding: 3px;
-                    font-size: 14px;
-                    margin: 2px 0px;
-                    text-align: right;
-                }
-
             }
-
             .rightContainer {
                 position: absolute;
                 width: 48%;
@@ -98,27 +83,22 @@ $error-color:#df2e38;
                 display: inline-block;
                 border: 1px solid $border-color;
                 margin: 10px 15px 0px 0px;
-
                 .graphText {
                     align-items: center;
                     color: #626161;
                     line-height: 1.5;
                     padding: 0px 0px 11px 5px;
-                }
-
-                .notionalLoss {
-                    color: $loss-color;
-                    font-weight: bold;
                     font-family: $font;
-                    font-size: 22px;
+                    .delay {
+                        color: #506ee4;
+                        font-weight: bold;
+                    }
+                    .lossAmount {
+                        color: $loss-color;
+                        font-weight: bold;
+                        font-size: 22px;
+                    }
                 }
-
-                .delay {
-                    color: #506ee4;
-                    font-weight: bold;
-                    font-family: $font;
-                }
-
                 .customTooltip {
                     font-family: $font;
                     border: #626161 1px solid;
@@ -126,17 +106,11 @@ $error-color:#df2e38;
                     text-align: left;
                     background-color: $main-color;
                 }
-
                 .barGraph {
                     margin: 20px;
                 }
-
-                .bar {
-                    width: 100%;
-                }
             }
         }
-
         .errorPage {
             position: absolute;
             width: 46%;
@@ -145,78 +119,52 @@ $error-color:#df2e38;
             border: 1px solid $border-color;
             margin: 10px;
             padding: 15px;
-            justify-content: center;
             text-transform: uppercase;
             font-family: "Montserrat";
-
-            .errHeading {
-                color: #df2e38;
-                margin: 200px 0px 0px 180px;
-            }
-
-            .errSubHeading {
-                display: block;
-                color: #df2e38;
-                font-size: 20px;
-                justify-content: center;
-                margin: 0px 0px 0px 118px;
-            }
+            color: #df2e38;
+            text-align: center;
+            padding-top: 200px;
         }
     }
 }
 
-@media screen and (max-width: 1300px){
+@media screen and (max-width: 1300px), (max-height: 300px) {
     .rightSideBox {
         height: auto;
         white-space: nowrap;
         text-overflow: ellipsis;
         background-color: $main-color;
     }
-
     .leftSideBox {
         position: relative;
-        overflow: hidden;
         max-height: 1000px;
     }
-
-    #root .rightMain {
+    #root {
         .rightContainer {
             display: block;
             position: absolute;
             width: 96%;
             margin: 10px;
         }
-
         .leftContainer {
             width: 95%;
         }
-
         .sliders {
             width: 80%;
         }
-
         .barGraph {
             margin: 10px;
         }
     }
 }
-
 @media (max-width: 768px) {
-
     .leftSideBox {
         display: none;
     }
-
     .rightSideBox {
         width: 100%;
-
-        .leftContainer {
-            width: 100%;
-        }
-
-        .rightContainer {
+        .leftContainer,.rightContainer {
             width: 100%;
         }
     }
-    
 }

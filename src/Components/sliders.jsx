@@ -189,7 +189,7 @@ const titleArr = {
 };
 
 const CustomInput = styled(MuiInput)`
-  width: 60px;
+  width: 80px;
 `;
 
 function SliderArea(props) {

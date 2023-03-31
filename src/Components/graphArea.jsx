@@ -63,11 +63,10 @@ function GraphArea(props) {
           {props.delay} {props.delay > 1 ? " months " : " month "}
         </span>
         in starting your SIP will cause a notional loss of
-        <span className="notionalLoss">
-          <br />
+        <h2 className="lossAmount">
           ₹ {toIndianRupees(props.graphData && props.graphData.notionalLoss)}
-        </span>
-        <br /> in the final value of your investment.
+        </h2>
+         in the final value of your investment.
       </p>
       <ResponsiveContainer height="40%" width="80%" aspect={1.3}>
         <BarChart className="barGraph" data={dataArray}>
