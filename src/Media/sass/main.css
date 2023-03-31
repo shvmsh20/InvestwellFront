@@ -20,11 +20,11 @@
   background-color: #f1f5fa;
 }
 .rightSideBox .backBtn {
-  font-weight: 550;
   font-size: medium;
   margin: 10px;
   border: none;
   background: none;
+  cursor: pointer;
 }
 .rightSideBox .rightMain {
   background-color: #ffffff;
@@ -165,6 +165,9 @@
   }
 }
 @media (max-width: 768px) {
+  .leftSideBox {
+    display: none;
+  }
   .rightSideBox {
     width: 100%;
   }
@@ -173,8 +176,5 @@
   }
   .rightSideBox .rightContainer {
     width: 100%;
-  }
-  .leftSideBox {
-    display: none;
   }
 }/*# sourceMappingURL=main.css.map */

@@ -28,11 +28,11 @@ $error-color:#df2e38;
     background-color: $right-side-box;
 
     .backBtn {
-        font-weight: 550;
         font-size: medium;
         margin: 10px;
         border: none;
         background: none;
+        cursor: pointer;
     }
 
     .rightMain {
@@ -204,6 +204,11 @@ $error-color:#df2e38;
 }
 
 @media (max-width: 768px) {
+
+    .leftSideBox {
+        display: none;
+    }
+
     .rightSideBox {
         width: 100%;
 
@@ -215,8 +220,5 @@ $error-color:#df2e38;
             width: 100%;
         }
     }
-
-    .leftSideBox {
-        display: none;
-    }
+    
 }

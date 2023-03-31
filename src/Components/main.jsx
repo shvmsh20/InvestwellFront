@@ -1,7 +1,6 @@
 import React from "react";
 import Calculator from "../../src/Components/index";
 
-
 function Main() {
   return (
     <div className="rightSideBox">

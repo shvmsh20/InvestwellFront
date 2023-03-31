@@ -1,21 +1,13 @@
 import React from "react";
-import {
-  ResponsiveContainer,
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  Label,
-  Tooltip,
-} from "recharts";
+import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Label, Tooltip } from "recharts";
 
 function GraphArea(props) {
-  //Converting Y-Axis label in lack
-  const formatYAxis = (tickItem) => {
+  //Converting Y-Axis label in lacs
+  const formatYAxisInLac = (tickItem) => {
     return `${tickItem / 100000}`;
   };
 
-  const Array = [
+  const dataArray = [
     {
       label: "Start Today",
       Amount: props.graphData && props.graphData.startToday,
@@ -41,22 +33,22 @@ function GraphArea(props) {
   }
 
   const formatValue = (label) => {
-    if (label === "Start Today") {
+    if (label === "Start Today") 
       return toIndianRupees(props.graphData.startToday);
-    }
-    if (label === "Delayed Start") {
+    
+    if (label === "Delayed Start") 
       return toIndianRupees(props.graphData.delayedStart);
-    }
-    if (label === "Notional Loss") {
+    
+    if (label === "Notional Loss") 
       return toIndianRupees(props.graphData.notionalLoss);
-    }
+    
   };
 
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
         <div className="customTooltip">
-          <div className="labelData">{label} </div>
+          <div className="labelData">{label}</div>
           <div className="tooltipAmount">₹{formatValue(label)}</div>
         </div>
       );
@@ -72,15 +64,15 @@ function GraphArea(props) {
         </span>
         in starting your SIP will cause a notional loss of
         <span className="notionalLoss">
-          <br />₹
-          {toIndianRupees(props.graphData && props.graphData.notionalLoss)}
+          <br />
+          ₹ {toIndianRupees(props.graphData && props.graphData.notionalLoss)}
         </span>
         <br /> in the final value of your investment.
       </p>
       <ResponsiveContainer height="40%" width="80%" aspect={1.3}>
-        <BarChart className="barGraph" data={Array}>
+        <BarChart className="barGraph" data={dataArray}>
           <XAxis dataKey="label" fill="#5E73EB" />
-          <YAxis width={110} tickFormatter={formatYAxis}>
+          <YAxis width={110} tickFormatter={formatYAxisInLac}>
             <Label
               angle={270}
               position="left"
@@ -99,7 +91,6 @@ function GraphArea(props) {
             wrapperStyle={{ outline: "none" }}
             allowEscapeViewBox={{ x: true, y: true }}
           />
-
           <Bar dataKey="Amount" />
         </BarChart>
       </ResponsiveContainer>

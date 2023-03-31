@@ -17,9 +17,8 @@ function Calculator() {
   const [graphData, setGraphData] = useState({invalid: false});
 
   const isValid = (val, min, max)=>{
-    if(val<min || val>max){
+    if(val<min || val>max)
       return false;
-    }
     return true;
   }
 
@@ -58,13 +57,10 @@ function Calculator() {
     }
   }
 
-
   //Api calling
-
   useEffect(() => {
-
     axios
-      .get("/getResults", {
+      .get("/getSipDelayCalculator", {
         params: {
           monthlyInvestment: monthlyInvestment,
           investmentPeriod: investmentPeriod,
@@ -79,7 +75,6 @@ function Calculator() {
         } else {
           setGraphData({invalid: true});
         }
-        
       })
       .catch((error) => {
         setGraphData({invalid: true});
@@ -89,7 +84,6 @@ function Calculator() {
   return (
     <div className="rightMain">
       <h2 className="heading"> SIP Delay Calculator</h2>
-
       <h5 className="info">
         It tells you how much wealth you can create by making monthly investment
       </h5>
@@ -103,7 +97,8 @@ function Calculator() {
             value={monthlyInvestment}
             inputBoxValue={inputBoxValue}
             invalidInputBox={invalidInputBox}
-            onChange={(event, inputBoxType, eventType, min, max)=>onChange(event, inputBoxType, eventType, min, max)}
+            onChange={(event, inputBoxType, eventType, min, max)=>
+            onChange(event, inputBoxType, eventType, min, max)}
           />
           <SliderArea
             type="investmentPeriod"
@@ -113,7 +108,8 @@ function Calculator() {
             value={investmentPeriod}
             inputBoxValue={inputBoxValue}
             invalidInputBox={invalidInputBox}
-            onChange={(event, inputBoxType, eventType, min, max)=>onChange(event, inputBoxType, eventType, min, max)}
+            onChange={(event, inputBoxType, eventType, min, max)=>
+            onChange(event, inputBoxType, eventType, min, max)}
           />
           <SliderArea
             type="rateOfReturn"
@@ -123,7 +119,8 @@ function Calculator() {
             value={rateOfReturn}
             inputBoxValue={inputBoxValue}
             invalidInputBox={invalidInputBox}
-            onChange={(event, inputBoxType, eventType, min, max)=>onChange(event, inputBoxType, eventType, min, max)}
+            onChange={(event, inputBoxType, eventType, min, max)=>
+            onChange(event, inputBoxType, eventType, min, max)}
           />
           <SliderArea
             type="delay"
@@ -133,17 +130,11 @@ function Calculator() {
             value={delay}
             invalidInputBox={invalidInputBox}
             inputBoxValue={inputBoxValue}
-            onChange={(event, inputBoxType, eventType, min, max)=>onChange(event, inputBoxType, eventType, min, max)}
+            onChange={(event, inputBoxType, eventType, min, max)=>
+            onChange(event, inputBoxType, eventType, min, max)}
           />
         </div>
-        {graphData.invalid ? (
-          <ErrorPage />
-        ) : (
-          <GraphArea
-            delay={delay}
-            graphData={graphData}
-          />
-        )}
+        {graphData.invalid ? <ErrorPage /> : <GraphArea delay={delay} graphData={graphData}/>}
       </div>
     </div>
   );

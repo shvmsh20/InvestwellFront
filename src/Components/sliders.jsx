@@ -188,10 +188,6 @@ const titleArr = {
   delay: "Delay in Staring SIP (in months)",
 };
 
-function valuetext(value) {
-  return `${value}`;
-}
-
 const CustomInput = styled(MuiInput)`
   width: 60px;
 `;
@@ -243,7 +239,6 @@ function SliderArea(props) {
             <Slider
               aria-label="Custom marks"
               defaultValue={props.value}
-              getAriaValueText={valuetext}
               min={props.min}
               max={props.max}
               step={props.steps}
