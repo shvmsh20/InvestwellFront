@@ -1,0 +1,161 @@
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.leftSideBox {
+  position: relative;
+  background: #526fe4;
+  width: 15%;
+  height: 100vh;
+  display: inline-block;
+}
+
+.rightSideBox {
+  display: inline-block;
+  width: 85%;
+  position: absolute;
+  background-color: #f1f5fa;
+}
+.rightSideBox .backBtn {
+  font-weight: 550;
+  font-size: medium;
+  margin: 10px;
+  border: none;
+  background: none;
+}
+.rightSideBox .rightMain {
+  background-color: #ffffff;
+  padding: 10px;
+  margin: 20px;
+  position: relative;
+}
+.rightSideBox .rightMain .info {
+  font-weight: 400;
+  margin: 10px;
+}
+.rightSideBox .rightMain .heading {
+  font-weight: 300;
+  margin: 10px;
+}
+.rightSideBox .rightMain .outerContainer {
+  position: relative;
+  width: inherit;
+}
+.rightSideBox .rightMain .outerContainer .leftContainer {
+  width: 50%;
+  height: inherit;
+  border: 1px solid #eaebed;
+  margin: 10px;
+  display: inline-block;
+}
+.rightSideBox .rightMain .outerContainer .leftContainer .sliders {
+  margin: 40px 0px 40px 30px;
+  width: 90%;
+}
+.rightSideBox .rightMain .outerContainer .leftContainer .sliders .grid {
+  position: relative;
+}
+.rightSideBox .rightMain .outerContainer .leftContainer .sliders .grid .gridItem {
+  position: absolute;
+  right: 0;
+}
+.rightSideBox .rightMain .outerContainer .leftContainer .sliders .grid .gridItem .inputBox {
+  background-color: #f1f5fa;
+}
+.rightSideBox .rightMain .outerContainer .leftContainer .sliders .errField {
+  color: #df2e38;
+  padding: 3px;
+  font-size: 14px;
+  margin: 2px 0px;
+  text-align: right;
+}
+.rightSideBox .rightMain .outerContainer .rightContainer {
+  position: absolute;
+  width: 48%;
+  height: 96.7%;
+  display: inline-block;
+  border: 1px solid #eaebed;
+  margin: 10px 15px 0px 0px;
+}
+.rightSideBox .rightMain .outerContainer .rightContainer .graphText {
+  align-items: center;
+  color: #626161;
+  line-height: 1.5;
+  padding: 0px 0px 11px 5px;
+  font-family: sans-serif;
+}
+.rightSideBox .rightMain .outerContainer .rightContainer .graphText .delay {
+  color: #506ee4;
+  font-weight: bold;
+}
+.rightSideBox .rightMain .outerContainer .rightContainer .graphText .lossAmount {
+  color: #df2e38;
+  font-weight: bold;
+  font-size: 22px;
+}
+.rightSideBox .rightMain .outerContainer .rightContainer .customTooltip {
+  font-family: sans-serif;
+  border: #626161 1px solid;
+  padding: 5px;
+  text-align: left;
+  background-color: #ffffff;
+}
+.rightSideBox .rightMain .outerContainer .rightContainer .barGraph {
+  margin: 20px;
+}
+.rightSideBox .rightMain .errorPage {
+  position: absolute;
+  width: 46%;
+  height: 96.5%;
+  display: inline-block;
+  border: 1px solid #eaebed;
+  margin: 10px;
+  padding: 15px;
+  text-transform: uppercase;
+  font-family: "Montserrat";
+  color: #df2e38;
+  text-align: center;
+  padding-top: 200px;
+}
+
+@media screen and (max-width: 1300px) {
+  .rightSideBox {
+    height: auto;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background-color: #ffffff;
+  }
+  .leftSideBox {
+    position: relative;
+    max-height: 1000px;
+  }
+  #root .rightContainer {
+    display: block;
+    position: absolute;
+    width: 96%;
+    margin: 10px;
+  }
+  #root .leftContainer {
+    width: 95%;
+  }
+  #root .sliders {
+    width: 80%;
+  }
+  #root .barGraph {
+    margin: 10px;
+  }
+}
+@media (max-width: 768px) {
+  .leftSideBox {
+    display: none;
+  }
+  .rightSideBox {
+    width: 100%;
+  }
+  .rightSideBox .leftContainer, .rightSideBox .rightContainer {
+    width: 100%;
+  }
+}/*# sourceMappingURL=main.css.map */
