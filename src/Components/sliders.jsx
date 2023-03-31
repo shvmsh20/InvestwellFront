@@ -213,13 +213,7 @@ function SliderArea(props) {
                 props.onChange(event, props.type, "blur", props.min, props.max)
               }
               onChange={(event) =>
-                props.onChange(
-                  event,
-                  props.type,
-                  "inputBox",
-                  props.min,
-                  props.max
-                )
+                props.onChange(event, props.type, "inputBox", props.min, props.max)
               }
               inputProps={{
                 step: props.steps,
@@ -245,13 +239,7 @@ function SliderArea(props) {
               marks={labelArr[props.type]}
               value={props.value}
               onChange={(event) =>
-                props.onChange(
-                  event,
-                  props.type,
-                  "slider",
-                  props.min,
-                  props.max
-                )
+                props.onChange(event, props.type, "slider", props.min, props.max)
               }
               aria-labelledby="input-slider"
             />

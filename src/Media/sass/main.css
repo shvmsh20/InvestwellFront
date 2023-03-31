@@ -54,7 +54,6 @@
 .rightSideBox .rightMain .outerContainer .leftContainer .sliders {
   margin: 40px 0px 40px 30px;
   width: 90%;
-  width: 90%;
 }
 .rightSideBox .rightMain .outerContainer .leftContainer .grid {
   position: relative;
@@ -136,7 +135,7 @@
   margin: 0px 0px 0px 118px;
 }
 
-@media screen and (max-width: 1300px), (max-height: 300px) {
+@media screen and (max-width: 1300px) {
   .rightSideBox {
     height: auto;
     white-space: nowrap;
